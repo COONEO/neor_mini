@@ -1,0 +1,15 @@
+base_local_planner: "teb_local_planner/TebLocalPlannerROS"   #  teb_local_planner/TebLocalPlannerROS
+base_global_planner: "global_planner/GlobalPlanner"                     # Specifies the name of the global planner plugin used for move_base.
+#base_local_planner: "base_local_planner/TrajectoryPlannerROS"
+shutdown_costmaps: false      # Whether to turn off costmap when move_base is inactive.
+controller_frequency: 10          # The frequency of sending commands to the chassis control movement topic cmd_vel.
+controller_patience: 0.1            # Before the space clearing operation is executed, how long does it take for the controller to wait for effective control to be issued.
+recovery_behavior_enabled: false
+planner_frequency: 5                # The global planner frequency,
+planner_patience: 4.0               # The time of waitting for a new route.
+
+oscillation_timeout: 10.0    # The length of time allowed to oscillate before executing the repair mechanism.
+oscillation_distance: 0.01   # Moving back and forth above the distance is not considered to be an oscillation.
+
+
+

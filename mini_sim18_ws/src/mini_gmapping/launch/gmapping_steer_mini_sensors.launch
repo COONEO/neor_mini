@@ -1,0 +1,16 @@
+<launch>
+   
+    <!--  launch steer_mini_gazebo model node -->
+    <include file="$(find steer_mini_gazebo)/mini_gazebo/launch/steer_mini_sim_sensors.launch" />
+
+    <!-- load robot_localication node Integrate imu and odometer information, output the fused odom information and tf conversion from base_link to odom for Gmapping mapping -->
+    <include file="$(find mini_gmapping)/launch/dual_ekf_navsat_mini.launch" />
+
+    <!--  launch gmapping node -->
+    <include file="$(find mini_gmapping)/launch/gmapping.launch" />
+
+    <!-- Load model into Rviz and Load Rviz configuration file into rviz-->
+    <param name="robot_description" textfile="$(find neor_mini)/urdf/neor_mini_gazebo_sensors.urdf" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mini_gmapping)/rviz/gmapping_rviz.rviz" />
+
+</launch>

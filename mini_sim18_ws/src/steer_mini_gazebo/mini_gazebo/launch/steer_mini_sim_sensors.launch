@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.0" />
+    <arg name="roll" default="0.0"/>
+    <arg name="pitch" default="0.0"/>
+    <arg name="yaw" default="0.0"/>
+
+    <!-- Gazebo  -->
+    <!--Load the surrounding environment into Gazebo-->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+        <arg name="world_name" value="$(find neor_mini)/worlds/cooneo_office.world"/>
+    </include>
+
+    <!-- Load the robot description -->
+    <param name="robot_description" command="cat $(find neor_mini)/urdf/neor_mini_gazebo_sensors.urdf"/>
+
+    <!-- Load ros_controllers configuration parameters -->
+    <rosparam file="$(find steer_mini_gazebo)/mini_control/config/ctrl_ackermann_steering_controller.yaml" command="load"   />
+    <rosparam file="$(find steer_mini_gazebo)/mini_control/config/ctrl_gains.yaml" command="load"   />
+    <rosparam file="$(find steer_mini_gazebo)/mini_control/config/ctrl_joint_state_publisher.yaml" command="load"   />
+    <rosparam file="$(find steer_mini_gazebo)/mini_control/config/ctrl_steer_bot_hardware_gazebo.yaml" command="load"   />
+
+    <!-- Spawn the controllers -->
+    <node pkg="controller_manager" type="spawner" name="controller_spawner"  args="joint_state_publisher ackermann_steering_controller" output="screen" respawn="false" />
+
+    <!-- Launch  the robot state publisher -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <param name="publish_frequency" value="50.0"/>
+    </node>
+
+    <!-- Launch a rqt steering GUI for publishing to /steer_bot/steer_drive_controller/cmd_vel -->
+    <node pkg="rqt_robot_steering" type="rqt_robot_steering" name="rqt_robot_steering" >
+        <param name="default_topic" value="ackermann_steering_controller/cmd_vel"/>                         <!-- default velocity control topic name -->
+        <param name="default_vx_max" value="1.0"/>                        <!-- linear velocity max value    m/s -->
+        <param name="default_vx_min" value="-1.0"/>                       <!-- linear velocity min value    m/s-->
+        <param name="default_vw_max" value="0.69"/>                    <!-- angular velocity max value  rad/s (adaptor for urdf joint limit) -->
+        <param name="default_vw_min" value="-0.69"/>                   <!-- angular velocity min value  rad/s (adaptor for urdf joint limit) -->
+    </node> 
+
+    <!--Start the Gazebo node and configure the location and posture of the accident when the model is loaded -->
+    <node name="spawn_vehicle" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model neor_mini -gazebo_namespace /gazebo 
+              -x $(arg x) -y $(arg y) -z $(arg z)
+              -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"
+          respawn="false" output="screen" />
+    <!-- ******************************************************************************************************************************************* -->
+
+   <node name="laser_to_base_link" pkg="tf" type="static_transform_publisher" args="0.0 0.0 0.135 0 0 0 base_link laser_link 40 " />
+   <node name="imu_to_base_link" pkg="tf" type="static_transform_publisher" args="-0.10 0.0 0.02 0 0 0 base_link imu_link 40 " />
+   <node name="camera_to_base_link" pkg="tf" type="static_transform_publisher" args="0.12 0.0 0.12 0 0 0 base_link camera_link 40 " />
+
+</launch>

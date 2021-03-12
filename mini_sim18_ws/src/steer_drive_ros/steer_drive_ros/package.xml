@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>steer_drive_ros</name>
+  <version>0.1.0</version>
+  <description>Steer driving meta package for ROS.</description>
+
+  <maintainer email="p595201m@mail.kyutech.jp">Masaru Morita</maintainer>
+  <license>BSD</license>
+  <url type="repository">https://github.com/CIR-KIT/steer_drive_ros.git</url>
+  <url type="bugtracker">https://github.com/CIR-KIT/steer_drive_ros/issues</url>
+  <author email="cirkit.infomation@gmail.com">CIR-KIT</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>steer_bot_hardware_gazebo</exec_depend>
+  <exec_depend>steer_drive_controller</exec_depend>
+  <exec_depend>stepback_and_steerturn_recovery</exec_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

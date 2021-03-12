@@ -1,0 +1,95 @@
+TebLocalPlannerROS:
+
+ odom_topic: odom
+ map_frame: map
+ # Trajectory
+  
+ teb_autosize: True
+ dt_ref: 0.3                                       # Desired trajectory time resolution
+ dt_hysteresis: 0.03                      #The hysteresis that automatically adjusts the size according to the current time resolution, usually approx. It is recommended to use 10% of dt ref.
+   
+ global_plan_overwrite_orientation: True  #  Cover the direction of the local sub-goals provided by the global planner
+
+ allow_init_with_backwards_motion: False
+ max_global_plan_lookahead_dist: 3.0      #  Specify the maximum length of the global plan subset considered for optimization
+
+ feasibility_check_no_poses: 5            # default：4    The number of attitude feasibility analysis for each sampling interval,
+
+ # Robot         
+ max_vel_x: 0.2                           #max_vel_x (double, default: 0.4)   
+ max_vel_x_backwards: 0.07               #max_vel_x_backwards (double, default: 0.2)  
+ acc_lim_x: 1.0                           #acc_lim_x (double, default: 0.5) 
+
+ max_vel_theta: 1.0                       #max_vel_theta (double, default: 0.3)  
+ acc_lim_theta: 0.5                       #acc_lim_theta (double, default: 0.5)  
+
+ min_turning_radius: 0.38 # min_turning_radius (double, default: 0.0)  diff-drive: 0 max_steer_angle = 45 度，car_length = 0.35  ----> Redius_min= 0.35
+
+#是否允许原地转
+ cmd_angle_instead_rotvel: false  # cmd_angle_instead_rotvel(bool,defaule:false) 
+ wheelbase: 0.35                  #wheelbase (double, default: 1.0)  diff-drive: 0.0  
+  
+ footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
+   type: "polygon"
+  # radius: 0.2 # for type "circular"
+  # line_start: [-0.3, 0.0] # for type "line"
+  # line_end: [0.3, 0.0] # for type "line"
+  # front_offset: 0.2 # for type "two_circles"
+  # front_radius: 0.2 # for type "two_circles"
+  # rear_offset: 0.2 # for type "two_circles"
+  # rear_radius: 0.2 # for type "two_circles"
+   vertices: [[-0.18, 0.22], [-0.18, -0.22], [0.2425, -0.22], [0.2425,0.22]] # for type "polygon"
+
+ # GoalTolerance
+    
+ xy_goal_tolerance: 0.2     #  Allowable distance error of target position
+ yaw_goal_tolerance: 0.5 #  Allowable angle error of target position
+ free_goal_vel: False          #  Remove the constraint of the target speed, that is, the speed when reaching the target point is 0, otherwise it will rush to the line at full speed
+    
+ # Obstacles
+    
+ min_obstacle_dist: 0.1                                         #  The minimum expected distance to the obstacle, note that teb_local_planner itself does not consider the expansion radius
+ include_costmap_obstacles: True                  # Should the barriers of the local costmap be taken into consideration
+ costmap_obstacles_behind_robot_dist: 1.0        #  Consider obstacles within n meters
+ obstacle_poses_affected: 30                                       #  In order to maintain the distance, each obstacle position is connected to the nearest position on the track.
+
+ costmap_converter_plugin: ""
+ costmap_converter_spin_thread: True             #default:true
+ costmap_converter_rate: 5                                     
+ # Optimization
+
+ no_inner_iterations: 5                          # The actual number of solver iterations called in each outer loop iteration
+ no_outer_iterations: 4                          # The actual number of solver iterations called in each outer loop iteration
+ optimization_activate: True
+ optimization_verbose: False
+ penalty_epsilon: 0.05                                  # Add a small safety margin to the penalty function of the hard constraint approximation
+ weight_max_vel_x: 2                                   # Optimized weight to meet the maximum allowable translation speed
+ weight_max_vel_theta: 0                          # Optimized weight to meet the maximum allowable translation speed
+ weight_acc_lim_x: 1                                    # The optimized weight that satisfies the maximum allowable translation acceleration.
+ weight_acc_lim_theta: 0.01                     # The optimal weight to meet the maximum allowable angular acceleration.
+ weight_kinematics_nh: 1000                   # Kinematics optimization weight
+ weight_kinematics_forward_drive: 2              #   Force the robot to select only the optimized weights in the positive direction (positive translation speed).
+ weight_kinematics_turning_radius: 1             #  Optimal weights with minimum turning radius
+ weight_optimaltime: 1                                            # The optimized weight for shrinking the trajectory according to the conversion/execution time.
+ weight_obstacle: 50                                                  #  Optimized weight to maintain the minimum distance to obstacles default: 50.0
+# weight_viapoint: 1                                                  #  Track the weight of the full data path
+# weight_inflation (double, default: 0.1)           #  Expansion radius weight
+ weight_dynamic_obstacle: 10                              # not in use yet 
+# weight_adapt_factor: 2                                          # Iteratively increase certain weights
+
+ selection_alternative_time_cost: False
+
+ enable_homotopy_class_planning: False        #  Activate parallel planning (because optimizing multiple trajectories at a time takes up more CPU resources
+ enable_multithreading: True                                 #  Activate multiple threads to plan each trajectory in different threads
+ simple_exploration: False
+ max_number_classes: 2                                            # Maximum number of different trajectories considered
+
+ roadmap_graph_no_samples: 15                           #  Specify the number of samples generated to create the roadmap
+ roadmap_graph_area_width: 5                               # Specify the width of the area
+ h_signature_prescaler: 0.5                                         #（0.2 < value <= 1） Scaling is used to distinguish the internal parameters (H-signature) of homotopy classes.
+
+ h_signature_threshold: 0.1               #  If the difference between the real part and the complex part is lower than the prescribed threshold, it is assumed that the two h signatures are equal.
+ obstacle_keypoint_offset: 0.1 
+ obstacle_heading_threshold: 0.45 # Specify the value of the scalar product between the obstacle header and the target header in order to take the (obstacle) into consideration
+ visualize_hc_graph: False                   #   Visually create graphs for exploring different trajectories (check the marked message in rviz
+#viapoints_all_candidates (bool, default: true) 

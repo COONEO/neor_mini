@@ -1,0 +1,25 @@
+<!---->
+<launch>
+   <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+    <arg name="world_name" value="$(find neor_mini)/worlds/cooneo_office.world"/>
+  </include>
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-file $(find neor_mini)/urdf/neor_mini_sensors_gazebo.urdf -urdf -model neor_mini" output="screen" />
+  <node name="fake_joint_calibration" pkg="rostopic" type="rostopic" args="pub /calibrated std_msgs/Bool true" />
+
+   <!--launch rviz node-->
+  <arg name="model" /> 
+  <arg name="gui" default="false" />
+  <param name="robot_description" textfile="$(find neor_mini)/urdf/neor_mini_with_sensors.urdf" />
+  <param name="use_gui" value="$(arg gui)" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find neor_mini)/rviz/rviz_sensors.rviz" />
+
+  <!--tf transform declear-->
+  <node name="laser_to_base_link" pkg="tf" type="static_transform_publisher" args="0.0 0.0 0.20 0 0 0 base_link laser_link 40 " />
+  <node name="imu_to_base_link" pkg="tf" type="static_transform_publisher" args="-0.10 0.0 0.12 0 0 0 base_link imu_link 40 " />
+  <node name="camera_to_base_link" pkg="tf" type="static_transform_publisher" args="0.23 0.0 0.05 0 0 0 base_link camera_link 40 " />
+  <node name="deep_camera_to_base_link" pkg="tf" type="static_transform_publisher" args="0.10 0.0 0.17 -1.57 0.0 -1.57 base_link deep_camera_link 40 " />
+  
+
+</launch>

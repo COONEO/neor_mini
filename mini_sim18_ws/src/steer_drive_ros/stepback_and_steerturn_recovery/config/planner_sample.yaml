@@ -1,0 +1,34 @@
+recovery_behaviour_enabled: true
+
+recovery_behaviors:
+  - {name: conservative_reset, type: clear_costmap_recovery/ClearCostmapRecovery}
+  - {name: stepback_and_steerturn_recovery, type: stepback_and_steerturn_recovery/StepBackAndSteerTurnRecovery}
+  - {name: aggressive_reset, type: clear_costmap_recovery/ClearCostmapRecovery}
+
+step_back_and_max_steer_recovery:
+    # 最初の一回だけ旋回したい場合にtrue
+    only_single_steering: true
+    # リカバリ行動の試行回数[回]
+    trial_times         : 3
+    # 障害物までの許容距離[m]．
+    #-- 移動中に，移動方向に対して最も近い障害物がこの距離以内に出現したら停止する．
+    obstacle_patience   : 0.3
+    #-- 移動中に，障害物を確認する頻度[回/sec]
+    obstacle_check_frequency: 5.0
+    # 障害物探索時の角度の分解能[rad] costmapアクセス回数を低減したいときに調整する．
+    sim_angle_resolution: 0.1
+    # 障害物探索時のsim更新周期 [回/sec] costmapアクセス回数を低減したいときに調整する．
+    simulation_frequency    : 5
+    # back(初回後退時の速度[m/s], 移動距離[m], タイムアウト[sec])
+    linear_vel_back     : -0.3
+    step_back_length    : 1.0
+    step_back_timeout   : 15.0
+    # steer(旋回時の速度[rad/s], 目標回転角度[rad], タイムアウト[sec])
+    linear_vel_steer    : 0.3
+    angular_speed_steer : 0.5
+    turn_angle          : 1.5
+    steering_timeout    : 15.0
+    # forward(旋回→直進→旋回の直進時の速度[m/s], 目標移動距離[m], タイムアウト[sec])
+    linear_vel_forward  : 0.3
+    step_forward_length : 1.0
+    step_forward_timeout: 15.0

@@ -1,0 +1,5 @@
+# Configuration for version of this recovery where we back up slowly about half a meter
+linear_x: -0.3
+linear_y: 0.0
+angular_z: 0.0
+duration: 1.5

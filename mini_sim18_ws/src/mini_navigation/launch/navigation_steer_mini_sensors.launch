@@ -1,0 +1,40 @@
+<launch>
+
+   <master auto="start"/>
+
+    <!--  launch steer_mini_gazebo model node -->
+    <include file="$(find steer_mini_gazebo)/mini_gazebo/launch/steer_mini_sim_sensors.launch" />
+
+    <!-- load robot_localication node Integrate imu and odometer information, output the fused odom information and tf conversion from base_link to odom for Gmapping mapping -->
+    <include file="$(find mini_gmapping)/launch/dual_ekf_navsat_mini.launch" /> 
+
+   <!-- Run the map server --> 
+   <node name="load_map_to_amcl" pkg="map_server" type="map_server" args="$(find mini_gmapping)/map/cooneo_office_map.yaml"/>
+   
+   <!--- Run AMCL --> 
+   <include file="$(find mini_navigation)/launch/diff_amcl.launch" />
+
+   <!-- Run move_base node -->
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+      
+      <!-- Register teb local planner into navigation -->
+      <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+      <param name="controller_frequency" value="10.0" />    <!-- define the output cmd_vel publish rate -->
+      <remap from="cmd_vel" to="ackermann_steering_controller/cmd_vel"/>
+
+      <rosparam file="$(find mini_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+      <rosparam file="$(find mini_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find mini_navigation)/config/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find mini_navigation)/config/move_base_params.yaml" command="load" />
+      <rosparam file="$(find mini_navigation)/config/global_costmap_params.yaml" command="load" /> 
+      <rosparam file="$(find mini_navigation)/config/teb_local_planner_params.yaml" command="load" />
+      <rosparam file="$(find mini_navigation)/config/global_planner_params.yaml" command="load"/>
+   </node>
+
+   <!-- load Robot model into Rviz -->
+    <param name="robot_description" textfile="$(find neor_mini)/urdf/neor_mini_gazebo_sensors.urdf" />
+    <node name="rviz" pkg="rviz" type="rviz"  args="-d $(find mini_navigation)/rviz/navigation_rviz.rviz"/>   <!--   -->
+
+</launch> 
+
+

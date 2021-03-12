@@ -1,0 +1,13 @@
+# Configuration for the steer_bot_hardware_gazebo plugin.
+steer_bot_hardware_gazebo:
+  rear_wheel  : 'rear_wheel_joint'       #    The name of the rear wheel joint, used to receive the linear drive command from the steer_drive_controller.
+  front_steer : 'front_steer_joint'         #   The name of the front steering joint, which is used to receive angle drive commands from the steer_drive_controller.
+
+  virtual_rear_wheels: ['left_rear_joint','right_rear_joint']                #   The name of the virtual rear wheel joint, used to send speed commands to the corresponding wheel joint of Gazebo.
+  virtual_front_wheels: ['front_left_wheel_joint','front_right_wheel_joint']  # The name of the virtual front wheel joint is used to grasp the current angle of the corresponding Gazebo wheel joint.
+  virtual_front_steers: ['front_steer_left_joint','front_steer_right_joint'] #  The name of the virtual front steering joint, used to send position commands to the corresponding steering joint in Gazebo.
+
+  enable_ackermann_link : true           #  If true, the virtual ackerman link mechanism is enabled. Otherwise, the paralell link mechanism will be enabled.
+  wheel_separation_h : 0.4035             #  The length of the wheel spacing on the left and right sides is used to calculate the steering angle of the Ackerman linkage
+  wheel_separation_w : 0.3492            # The front and rear track is used to calculate the steering angle of the Ackerman linkage.
+
