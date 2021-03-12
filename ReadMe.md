@@ -136,7 +136,7 @@ When you run up the list launch file, your monitor will show two windows, one is
 
 COONEO Co.,Ltd
 
-url:http://cooneo.cc/wordpress/
+Web:http://cooneo.cc
 
 E: cooneo@outlook.com
 
