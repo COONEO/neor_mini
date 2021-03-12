@@ -135,11 +135,9 @@ When you run up the list launch file, your monitor will show two windows, one is
 
 
 COONEO Co.,Ltd
-\#1801
-Overseas Student Venture Mansion
-Nanshan District, Shenzhen, China
 
-T: [+86 0755 26659715](http://cooneo.cc/wordpress/#)
-E: [cooneo@outlook.com](http://cooneo.cc/wordpress/#)
+url:http://cooneo.cc/wordpress/
+
+E: cooneo@outlook.com
 
 # neor_mini
