@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset><contributor><author></author><authoring_tool>FBX COLLADA exporter</authoring_tool><comments></comments></contributor><created>2018-10-04T04:09:40Z</created><keywords></keywords><modified>2018-10-04T04:09:40Z</modified><revision></revision><subject></subject><title></title><unit meter="0.010000" name="centimeter"></unit><up_axis>Z_UP</up_axis></asset>
+  <library_images>
+    <image id="FBXASC232FBXASC180FBXASC180FBXASC229FBXASC155FBXASC190FBXASC032FBXASC0352-image" name="FBXASC232FBXASC180FBXASC180FBXASC229FBXASC155FBXASC190FBXASC032FBXASC0352"><init_from>../materials/textures/aws_Ground_01.png</init_from></image>
+  </library_images>
+  <library_materials>
+    <material id="FBXASC0481FBXASC032-FBXASC032Default" name="FBXASC0481FBXASC032-FBXASC032Default">
+      <instance_effect url="#FBXASC0481FBXASC032-FBXASC032Default-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="FBXASC0481FBXASC032-FBXASC032Default-fx" name="FBXASC0481FBXASC032-FBXASC032Default">
+      <profile_COMMON>
+        <technique sid="standard">
+          <phong>
+            <emission>
+              <color sid="emission">0.000000  0.000000 0.000000 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0.588235  0.588235 0.588235 1.000000</color>
+            </ambient>
+            <diffuse>
+              <texture texture="FBXASC232FBXASC180FBXASC180FBXASC229FBXASC155FBXASC190FBXASC032FBXASC0352-image" texcoord="CHANNEL0">
+                <extra>
+                  <technique profile="MAYA">
+                    <wrapU sid="wrapU0">TRUE</wrapU>
+                    <wrapV sid="wrapV0">TRUE</wrapV>
+                    <blend_mode>ADD</blend_mode>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.000000  0.000000 0.000000 1.000000</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">2.000000</float>
+            </shininess>
+            <reflective>
+              <color sid="reflective">0.000000  0.000000 0.000000 1.000000</color>
+            </reflective>
+            <reflectivity>
+              <float sid="reflectivity">1.000000</float>
+            </reflectivity>
+            <transparent opaque="RGB_ZERO">
+              <color sid="transparent">1.000000  1.000000 1.000000 1.000000</color>
+            </transparent>
+            <transparency>
+              <float sid="transparency">0.000000</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="aws_Ground_01_visual-lib" name="aws_Ground_01_visualMesh">
+      <mesh>
+        <source id="aws_Ground_01_visual-POSITION">
+          <float_array id="aws_Ground_01_visual-POSITION-array" count="12">
+-1500.000000 -1500.000000 0.000000
+1500.000000 -1500.000000 0.000000
+-1500.000000 1500.000000 0.000000
+1500.000000 1500.000000 0.000000
+</float_array>
+          <technique_common>
+            <accessor source="#aws_Ground_01_visual-POSITION-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="aws_Ground_01_visual-Normal0">
+          <float_array id="aws_Ground_01_visual-Normal0-array" count="12">
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#aws_Ground_01_visual-Normal0-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="aws_Ground_01_visual-UV0">
+          <float_array id="aws_Ground_01_visual-UV0-array" count="8">
+-7.075511 -7.205335
+8.603588 -7.205335
+-7.075511 8.473763
+8.603588 8.473763
+</float_array>
+          <technique_common>
+            <accessor source="#aws_Ground_01_visual-UV0-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="aws_Ground_01_visual-UV1">
+          <float_array id="aws_Ground_01_visual-UV1-array" count="8">
+0.000500 0.000500
+0.999500 0.000500
+0.000500 0.999500
+0.999500 0.999500
+</float_array>
+          <technique_common>
+            <accessor source="#aws_Ground_01_visual-UV1-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="aws_Ground_01_visual-VERTEX">
+          <input semantic="POSITION" source="#aws_Ground_01_visual-POSITION"/>
+        </vertices>
+        <polylist count="1" material="FBXASC0481FBXASC032-FBXASC032Default"><input semantic="VERTEX" offset="0" source="#aws_Ground_01_visual-VERTEX"/><input semantic="NORMAL" offset="1" source="#aws_Ground_01_visual-Normal0"/><input semantic="TEXCOORD" offset="2" set="0" source="#aws_Ground_01_visual-UV0"/><input semantic="TEXCOORD" offset="3" set="1" source="#aws_Ground_01_visual-UV1"/><vcount>4 </vcount><p> 1 0 1 1 3 1 3 3 2 2 2 2 0 3 0 0</p></polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="aws_Ground_01_visual" name="aws_Ground_01_visual">
+      <node name="aws_Ground_01_visual" id="aws_Ground_01_visual" sid="aws_Ground_01_visual"><matrix sid="matrix">28.288637 0.000000 0.000000 -21.718655 0.000000 28.288637 0.000000 -15.556679 0.000000 0.000000 28.288637 0.000000 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#aws_Ground_01_visual-lib"><bind_material><technique_common><instance_material symbol="FBXASC0481FBXASC032-FBXASC032Default" target="#FBXASC0481FBXASC032-FBXASC032Default"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node>
+      <extra><technique profile="MAX3D"><frame_rate>30.000000</frame_rate></technique><technique profile="FCOLLADA"><start_time>0.000000</start_time><end_time>3.333333</end_time></technique></extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#aws_Ground_01_visual"></instance_visual_scene>
+  </scene>
+</COLLADA>

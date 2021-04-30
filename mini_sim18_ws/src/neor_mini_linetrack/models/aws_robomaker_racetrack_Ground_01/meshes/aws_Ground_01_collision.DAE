@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset><contributor><author></author><authoring_tool>FBX COLLADA exporter</authoring_tool><comments></comments></contributor><created>2018-10-04T04:10:25Z</created><keywords></keywords><modified>2018-10-04T04:10:25Z</modified><revision></revision><subject></subject><title></title><unit meter="0.010000" name="centimeter"></unit><up_axis>Z_UP</up_axis></asset>
+  <library_materials>
+    <material id="MaterialFBXASC032FBXASC03527" name="MaterialFBXASC032FBXASC03527">
+      <instance_effect url="#MaterialFBXASC032FBXASC03527-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="MaterialFBXASC032FBXASC03527-fx" name="MaterialFBXASC032FBXASC03527">
+      <profile_COMMON>
+        <technique sid="standard">
+          <phong>
+            <emission>
+              <color sid="emission">0.000000  0.000000 0.000000 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0.588000  0.588000 0.588000 1.000000</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.588000  0.588000 0.588000 1.000000</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.000000  0.000000 0.000000 1.000000</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">2.000000</float>
+            </shininess>
+            <reflective>
+              <color sid="reflective">0.000000  0.000000 0.000000 1.000000</color>
+            </reflective>
+            <reflectivity>
+              <float sid="reflectivity">1.000000</float>
+            </reflectivity>
+            <transparent opaque="RGB_ZERO">
+              <color sid="transparent">1.000000  1.000000 1.000000 1.000000</color>
+            </transparent>
+            <transparency>
+              <float sid="transparency">0.800000</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="aws_Ground_01_collision-lib" name="aws_Ground_01_collisionMesh">
+      <mesh>
+        <source id="aws_Ground_01_collision-POSITION">
+          <float_array id="aws_Ground_01_collision-POSITION-array" count="24">
+-1500.000000 -1500.000000 0.000000
+1500.000000 -1500.000000 0.000000
+-1500.000000 1500.000000 0.000000
+1500.000000 1500.000000 0.000000
+-1499.999878 -1499.999878 -14.904947
+1499.999878 -1499.999878 -14.904947
+-1499.999878 1499.999878 -14.904947
+1499.999878 1499.999878 -14.904947
+</float_array>
+          <technique_common>
+            <accessor source="#aws_Ground_01_collision-POSITION-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="aws_Ground_01_collision-Normal0">
+          <float_array id="aws_Ground_01_collision-Normal0-array" count="72">
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 -1.000000 -0.000008
+0.000000 -1.000000 -0.000008
+0.000000 -1.000000 -0.000008
+0.000000 -1.000000 -0.000008
+1.000000 0.000000 -0.000008
+1.000000 0.000000 -0.000008
+1.000000 0.000000 -0.000008
+1.000000 0.000000 -0.000008
+-1.000000 0.000000 -0.000008
+-1.000000 0.000000 -0.000008
+-1.000000 0.000000 -0.000008
+-1.000000 0.000000 -0.000008
+0.000000 1.000000 -0.000008
+0.000000 1.000000 -0.000008
+0.000000 1.000000 -0.000008
+0.000000 1.000000 -0.000008
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#aws_Ground_01_collision-Normal0-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="aws_Ground_01_collision-UV0">
+          <float_array id="aws_Ground_01_collision-UV0-array" count="16">
+-7.075511 -7.205335
+8.603588 -7.205335
+-7.075511 8.473763
+8.603588 8.473763
+-7.075511 -7.205335
+8.603588 -7.205335
+8.603588 8.473763
+-7.075511 8.473763
+</float_array>
+          <technique_common>
+            <accessor source="#aws_Ground_01_collision-UV0-array" count="8" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="aws_Ground_01_collision-UV1">
+          <float_array id="aws_Ground_01_collision-UV1-array" count="16">
+0.000500 0.000500
+0.999500 0.000500
+0.000500 0.999500
+0.999500 0.999500
+0.000500 0.000500
+0.999500 0.000500
+0.999500 0.999500
+0.000500 0.999500
+</float_array>
+          <technique_common>
+            <accessor source="#aws_Ground_01_collision-UV1-array" count="8" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="aws_Ground_01_collision-VERTEX">
+          <input semantic="POSITION" source="#aws_Ground_01_collision-POSITION"/>
+        </vertices>
+        <polylist count="6" material="MaterialFBXASC032FBXASC03527"><input semantic="VERTEX" offset="0" source="#aws_Ground_01_collision-VERTEX"/><input semantic="NORMAL" offset="1" source="#aws_Ground_01_collision-Normal0"/><input semantic="TEXCOORD" offset="2" set="0" source="#aws_Ground_01_collision-UV0"/><input semantic="TEXCOORD" offset="3" set="1" source="#aws_Ground_01_collision-UV1"/><vcount>4 4 4 4 4 4 </vcount><p> 1 0 1 1 3 1 3 3 2 2 2 2 0 3 0 0 1 4 1 1 0 5 0 0 4 6 4 4 5 7 5 5 3 8 3 3 1 9 1 1 5 10 5 5 7 11 6 6 0 12 0 0 2 13 2 2 6 14 7 7 4 15 4 4 2 16 2 2 3 17 3 3 7 18 6 6 6 19 7 7 6 20 7 7 7 21 6 6 5 22 5 5 4 23 4 4</p></polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="aws_Ground_01_collision" name="aws_Ground_01_collision">
+      <node name="aws_Ground_01_collision" id="aws_Ground_01_collision" sid="aws_Ground_01_collision"><matrix sid="matrix">28.242096 0.000000 0.000000 -21.718655 0.000000 28.242096 0.000000 -15.556679 0.000000 0.000000 28.242096 4.646057 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#aws_Ground_01_collision-lib"><bind_material><technique_common><instance_material symbol="MaterialFBXASC032FBXASC03527" target="#MaterialFBXASC032FBXASC03527"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node>
+      <extra><technique profile="MAX3D"><frame_rate>30.000000</frame_rate></technique><technique profile="FCOLLADA"><start_time>0.000000</start_time><end_time>3.333333</end_time></technique></extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#aws_Ground_01_collision"></instance_visual_scene>
+  </scene>
+</COLLADA>

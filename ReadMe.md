@@ -1,5 +1,7 @@
 # Neor mini Simulation Tutorials
 
+## Chapter 1: Make a indoor autonomous mobile robot
+
 ![](pictures/neor_mini_gazebo.png)
 
 Developing Environments:
@@ -126,18 +128,70 @@ When you run up the list launch file, your monitor will show two windows, one is
 
 
 
+## Chapter 2: Make a outdoor line-tracking mobile robot
+
+![](pictures/new_neor_mini.png)
 
 
-​																																									2021.03.02     
+
+step 1 : Copy Gazebo-world from neor_mini_linetrack/models folder
+
+```bash
+# open a Terminal
+cp -r ~/neor_mini/mini_sim18_ws/src/neor_mini_linetrack/models/* ~/.gazebo/models/
+```
+
+and you will see four new folder in your ./gazebo/models folder as follows:
+
+![](pictures/folder_list.png)
+
+
+
+Step 2 : launch neor_mini_linetrack package launch file
+
+```bash
+# open a Terminal 
+cd ~/neor_mini/mini_sim18_ws/
+catkin_make                                                         # compile you all ros node in you workspace
+source devel/setup.bash
+roslaunch neor_mini_linetrack neor_mini_linetrack_day.launch
+```
+
+and you will see:
+
+![](pictures/gazebo_start_success.png)
+
+
+
+Step 3: rosrun line-tracking python node
+
+```bash
+# open a Terminal
+cd ~/neor_mini/mini_sim18_ws/
+source devel/setup.bash
+rosrun neor_mini_linetrack line_follower_object.py
+```
+
+and you will see four new windows ,it's like this:
+
+![](pictures/line-tracking_start_success.png)
+
+Congratulations!!! you will see the neor_mini urdf model running automatically using the data from the camera. 
+
+​																																									2021.04.30     
 
 ​																																				author:ZhaoXiang Lee
-
-
 
 COONEO Co.,Ltd
 
 Web:http://cooneo.cc
 
 E: cooneo@outlook.com
+
+
+
+For more details,you can search "COONEO" in your WeChat.
+
+![](pictures/COONEO_wechat.jpg)
 
 # neor_mini

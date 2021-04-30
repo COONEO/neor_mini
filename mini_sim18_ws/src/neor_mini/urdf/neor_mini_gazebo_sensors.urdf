@@ -35,7 +35,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://neor_mini/meshes/base_link.dae" />
+        <mesh filename="package://neor_mini/meshes/base_link.STL" />
       </geometry>
       <material name="">
       <color rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" /> 
