@@ -1,0 +1,34 @@
+<launch>
+
+   <master auto="start"/>
+   <!-- Run the map server --> 
+   <node name="load_map_to_amcl" pkg="map_server" type="map_server" args="$(find steer_mini_gazebo)/map/map.yaml"/>
+   
+   <!--- Run AMCL --> 
+   <include file="$(find steer_mini_gazebo)/nav_config/diff_amcl.launch" />
+
+   <!-- Run move_base node -->
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+      
+      <!-- Register teb local planner into navigation -->
+      <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+      <param name="controller_frequency" value="10.0" />    <!-- define the output cmd_vel publish rate -->
+      
+      <remap from="cmd_vel" to="ackermann_steering_controller/cmd_vel"/>
+
+      <rosparam file="$(find steer_mini_gazebo)/nav_config/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+      <rosparam file="$(find steer_mini_gazebo)/nav_config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find steer_mini_gazebo)/nav_config/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find steer_mini_gazebo)/nav_config/move_base_params.yaml" command="load" />
+      <rosparam file="$(find steer_mini_gazebo)/nav_config/global_costmap_params.yaml" command="load" /> 
+      <rosparam file="$(find steer_mini_gazebo)/nav_config/teb_local_planner_params.yaml" command="load" />
+      <rosparam file="$(find steer_mini_gazebo)/nav_config/global_planner_params.yaml" command="load"/>
+   </node>
+
+   <!-- load Robot model into Rviz -->
+    <param name="robot_description" textfile="$(find cooneo_mini)/urdf/cooneo_mini_sensors_gazebo.urdf" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find steer_mini_gazebo)/rviz/navigation_rviz.rviz" />
+
+</launch> 
+
+

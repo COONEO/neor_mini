@@ -1,0 +1,59 @@
+# Configuration for the ackermann_steering_controller.
+ackermann_steering_controller:
+    type: 'ackermann_steering_controller/AckermannSteeringController'
+
+    # Odometry related 
+    publish_rate: 5                    # 里程计发布频率 default: 1.0
+    open_loop: false
+
+    # Joints
+    rear_wheel: 'rear_wheel_joint' 
+    front_steer: 'front_steer_joint'
+
+    # Geometry
+    wheel_separation_h: 0.3492       #后轮与前轮的距离
+    wheel_radius: 0.0625             #车轮半径
+
+    # Odometry calibration and tuning
+    wheel_separation_h_multiplier: 1.0  # 乘数应用于车轮分离参数。这用于解决机器人模型与实际机器人之间的差异（例如，里程计调整） default: 1.0 
+    wheel_radius_multiplier: 1.0        # 乘数应用于车轮半径参数。这用于解决机器人模型与实际机器人之间的差异（例如，里程计调整）。 default: 1.0
+    steer_pos_multiplier: 1.0           # 转向位置角度倍增器可进行微调。 default: 1.0
+
+    # Odometry covariances for the encoder output of the robot.
+    pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
+    twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
+
+    # Top level frame (link) of the robot description
+    base_frame_id: 'base_link'
+
+    # Transform from odom -> base_link
+    enable_odom_tf: false              #是否直接发布odom --> base_link的tf转换
+    odom_frame_id: '/ackermann_steering_controller/odom'            #/ackermann_steering_controller/odom
+
+    # Set to false if the motor driver provides velocity data. 
+    estimate_velocity_from_position: true
+
+    # Commands
+    publish_cmd: true
+    allow_multiple_cmd_vel_publishers: true
+
+    # Velocity and acceleration limits for the robot
+    linear:
+        x:
+            has_velocity_limits    : true
+            max_velocity           : 1.0   # m/s
+            has_acceleration_limits: true
+            max_acceleration       : 2.0    # m/s^2
+    angular:
+        z:
+            has_velocity_limits    : true
+            max_velocity           : 1.0   # rad/s
+            has_acceleration_limits: true
+            max_acceleration       : 3.0    # rad/s^2
+
+    # Other (undocumented but in source code)
+    # velocity_rolling_window_size: 10
+    # cmd_vel_timeout: 0.5               #连续两条速度命令之间允许的时间间隔，超过间隔后会立即停车
+
+    # Deprecated...
+    # publish_wheel_joint_controller_state: false

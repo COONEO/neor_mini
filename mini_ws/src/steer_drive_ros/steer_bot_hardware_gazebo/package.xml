@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>steer_bot_hardware_gazebo</name>
+  <version>0.1.0</version>
+  <description>steer bot hardware for gazebo simulation</description>
+
+  <maintainer email="p595201m@mail.kyutech.jp">Masaru Morita</maintainer>
+
+  <license>BSD</license>
+
+  <url type="bugtracker">https://github.com/CIR-KIT/steer_drive_ros/issues</url>
+  <url type="repository">https://github.com/CIR-KIT/steer_drive_ros.git</url>
+  <author email="cirkit.infomation@gmail.com">CIR-KIT</author>
+  <author email="p595201m@mail.kyutech.jp">Masaru Morita</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>angles</depend>
+  <depend>control_toolbox</depend>
+  <depend>gazebo_ros_control</depend>
+  <depend>hardware_interface</depend>
+  <depend>joint_limits_interface</depend>
+  <depend>roscpp</depend>
+
+  <build_depend>gazebo</build_depend>
+
+  <export>
+    <gazebo_ros_control plugin="${prefix}/steer_bot_hardware_gazebo_plugins.xml"/>
+  </export>
+</package>

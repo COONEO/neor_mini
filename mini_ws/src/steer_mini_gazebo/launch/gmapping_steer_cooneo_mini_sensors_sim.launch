@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- 设置模型在Gazebo中的起始位置和姿态 -->
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.0" />
+    <arg name="roll" default="0.0"/>
+    <arg name="pitch" default="0.0"/>
+    <arg name="yaw" default="1.57"/>
+    <!-- ******************************************************************************************************************************************* -->
+
+    <!-- 向Gazebo中加载周围环境  -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+        <arg name="world_name" value="$(find cooneo_mini)/worlds/cooneo_office.world"/>
+    </include>
+
+    <!-- 讲机器人的 URDF 文件加载进Gazebo中 -->
+    <param name="robot_description" command=" cat $(find cooneo_mini)/urdf/cooneo_mini_sensors_gazebo.urdf"/>
+
+    <!-- 加载 ackermann_steering_controller 控制插件的配置文件 -->
+    <rosparam file="$(find steer_mini_gazebo)/config/ctrl_ackermann_steering_controller_mini.yaml" command="load"  />
+    <rosparam file="$(find steer_mini_gazebo)/config/ctrl_gains_mini.yaml" command="load" />
+    <rosparam file="$(find steer_mini_gazebo)/config/ctrl_joint_state_publisher_mini.yaml" command="load"  />
+    <rosparam file="$(find steer_mini_gazebo)/config/ctrl_steer_bot_hardware_gazebo_mini.yaml" command="load" />
+
+    <!-- 启动 实时控制管理节点及ackermann_steering_controller节点，便于在Gazebo中模拟阿克曼底盘的运动 -->
+    <node pkg="controller_manager" type="spawner" name="controller_spawner" args="joint_state_publisher ackermann_steering_controller" output="screen" respawn="false" />
+
+    <!-- 启动 robot_state_publisher 节点，发布机器人状态信息 -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <param name="publish_frequency" value="30.0"/>
+    </node>
+
+    <!-- 启动一个 rqt steering GUI，发布速度控制 steer_drive_controller/cmd_vel -->
+    <node pkg="rqt_robot_steering" type="rqt_robot_steering" name="rqt_robot_steering" >
+        <param name="default_topic" value="ackermann_steering_controller/cmd_vel"/>
+    </node>
+
+    <!-- 启动 Gazebo 节点，并配置模型加载的出事位置和姿态 -->
+    <node name="spawn_vehicle" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model cooneo_mini -gazebo_namespace /gazebo 
+              -x $(arg x) -y $(arg y) -z $(arg z)
+              -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"
+          respawn="false" output="screen" />
+    <!-- ******************************************************************************************************************************************* -->
+          
+    <!-- load robot_localication node 融合imu 和里程计信息，输出融合后的odom信息 以及base_link 到 odom 的tf转换，供Gmapping 建图使用 -->
+    <include file="$(find robot_localization)/launch/dual_ekf_navsat_mini.launch" />
+
+    <!--include file="$(find robot_pose_ekf)/launch/robot_pose_ekf_mini.launch" /-->
+
+    <!-- launch Gmapping node -->
+    <!--inlcude file="$(find steer_mini_gazebo)/launch/gmapping.launch" /-->
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" >
+        <param name="base_fram" value="base_link" />
+        <param name="map_frame" value="map" />
+        <!--param name="odom_frame" value="/ackermann_steering_controller/odom" /--> 
+        <param name="odom_frame" value="odom" />
+        <param name="map_update_interval" value="2.0"/>
+        <param name="maxUrange" value="12.0"/>
+        <param name="sigma" value="0.05"/>
+        <param name="kernelSize" value="1"/>
+        <param name="lstep" value="0.05"/>
+        <param name="astep" value="0.05"/>
+        <param name="iterations" value="5"/>
+        <param name="lsigma" value="0.075"/>
+        <param name="ogain" value="3.0"/>
+        <param name="lskip" value="0"/>
+        <param name="srr" value="0.1"/>
+        <param name="srt" value="0.2"/>
+        <param name="str" value="0.1"/>
+        <param name="stt" value="0.2"/>
+        <param name="linearUpdate" value="0.2"/>         <!-- 机器人每行走多远就处理一次扫描数据 default is 0.5 m -->
+        <param name="angularUpdate" value="0.2"/>        <!-- 机器人每旋转多大角度就处理一次扫描数据 default is 0.5 rad-->
+        <param name="temporalUpdate" value="3.0"/>  
+        <param name="resampleThreshold" value="0.5"/>
+        <param name="particles" value="30"/>
+        <param name="xmin" value="-50.0"/>              <!-- 地图大小 -->
+        <param name="ymin" value="-50.0"/>
+        <param name="xmax" value="50.0"/>
+        <param name="ymax" value="50.0"/>
+        <param name="delta" value="0.05"/>              <!-- 地图分辨率-->
+        <param name="llsamplerange" value="0.01"/>
+        <param name="llsamplestep" value="0.01"/>
+        <param name="lasamplerange" value="0.005"/>
+        <param name="lasamplestep" value="0.005"/>
+    </node>
+
+    <!-- Load model into Rviz and Load Rviz configuration file into rviz-->
+    <param name="robot_description" textfile="$(find cooneo_mini)/urdf/cooneo_mini_sensors_gazebo.urdf" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find steer_mini_gazebo)/rviz/gmapping_rviz.rviz" />
+
+
+  <!--tf transform declear-->
+  <node name="laser_to_base_link" pkg="tf" type="static_transform_publisher" args="0.0 0.0 0.20 0 0 0 base_link laser_link 40 " />
+  <node name="imu_to_base_link" pkg="tf" type="static_transform_publisher" args="-0.10 0.0 0.12 0 0 0 base_link imu_link 40 " />
+  <node name="camera_to_base_link" pkg="tf" type="static_transform_publisher" args="0.23 0.0 0.05 0 0 0 base_link camera_link 40 " />
+  <node name="deep_camera_to_base_link" pkg="tf" type="static_transform_publisher" args="0.10 0.0 0.17 -1.57 0.0 -1.57 base_link deep_camera_link 40 " />
+
+</launch>

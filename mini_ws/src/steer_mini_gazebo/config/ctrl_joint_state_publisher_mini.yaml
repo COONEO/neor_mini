@@ -1,0 +1,4 @@
+# Configuration for the ros_controllers joint_state_controller.
+joint_state_publisher:
+    type: "joint_state_controller/JointStateController"
+    publish_rate: 50

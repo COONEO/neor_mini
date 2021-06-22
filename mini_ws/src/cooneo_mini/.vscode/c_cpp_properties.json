@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/lee/catkin_ws/devel/include",
+                "/opt/ros/kinetic/include",
+                "/home/lee/catkin_ws/src/cooneo_imu/include",
+                "/home/lee/catkin_ws/src/hls_lfcd_lds_driver/include",
+                "/home/lee/catkin_ws/src/joy_control/include",
+                "/home/lee/catkin_ws/src/motor_adaptor/include",
+                "/home/lee/catkin_ws/src/steer_drive_ros/steer_bot_hardware_gazebo/include",
+                "/home/lee/catkin_ws/src/steer_drive_ros/steer_drive_controller/include",
+                "/home/lee/catkin_ws/src/steer_drive_ros/stepback_and_steerturn_recovery/include",
+                "/home/lee/catkin_ws/src/velodyne_simulator/velodyne_gazebo_plugins/include",
+                "/usr/include"
+            ],
+            "name": "Linux",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

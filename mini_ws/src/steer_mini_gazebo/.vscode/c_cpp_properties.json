@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/opt/ros/kinetic/include",
+                "/home/lee/test_ws/src/steer_drive_ros/steer_bot_hardware_gazebo/include",
+                "/home/lee/test_ws/src/steer_drive_ros/steer_drive_controller/include",
+                "/home/lee/test_ws/src/steer_drive_ros/stepback_and_steerturn_recovery/include",
+                "/usr/include"
+            ],
+            "name": "Linux",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

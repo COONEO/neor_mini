@@ -1,0 +1,7 @@
+<library path="lib/libstepback_and_steerturn_recovery">
+    <class name="stepback_and_steerturn_recovery/StepBackAndSteerTurnRecovery" type="stepback_and_steerturn_recovery::StepBackAndSteerTurnRecovery" base_class_type="nav_core::RecoveryBehavior">
+    <description>
+      Steps back and proceed with a specified steer angle.
+    </description>
+  </class>
+</library>

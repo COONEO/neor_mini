@@ -1,0 +1,12 @@
+# Configuration for the steer_bot_hardware_gazebo plugin.
+steer_bot_hardware_gazebo:
+  rear_wheel  : 'rear_wheel_joint'       #后轮关节名称，用于接收来自steer_drive_controller的线性驱动命令。
+  front_steer : 'front_steer_joint'      #前转向接头名称，用于从steer_drive_controller接收角驱动命令。
+
+  virtual_rear_wheels: ['left_rear_joint','right_rear_joint']                #虚拟后轮接头名称，用于向Gazebo的对应的轮接头发送速度指令。
+  virtual_front_wheels: ['front_left_wheel_joint','front_right_wheel_joint']  #虚拟前轮接头名称以掌握Gazebo相应轮接头的当前角度。
+  virtual_front_steers: ['front_steer_left_joint','front_steer_right_joint'] #虚拟前转向关节名称，用于向Gazebo中的相应转向关节发送位置命令。
+
+  enable_ackermann_link : true           #如果为true，则启用虚拟ackerman链接机制。否则，将启用paralell链接机制。
+  wheel_separation_h : 0.4035            #左右两侧的车轮间隔长度，用于计算阿克曼连杆机构的转向角。
+  wheel_separation_w : 0.3492            #前后轮距，用于计算阿克曼连杆机构的转向角。

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/lee/ackerman_ws/src/steer_mini_gazebo/build/devel/setup.sh

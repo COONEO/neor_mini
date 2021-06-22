@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<launch>
+  <!-- amcl -->
+  <arg name="use_map_topic"  default="false"/>
+  <arg name="scan_topic"     default="scan"/>
+  <arg name="initial_pose_x" default="0.0"/>
+  <arg name="initial_pose_y" default="0.0"/>
+  <arg name="initial_pose_a" default="0.0"/>
+    <arg name="init_x" default="0" />
+    <arg name="init_y" default="0" />
+    <arg name="init_a" default="0" />
+
+    <node pkg="amcl" type="amcl" name="amcl" output="screen">
+        <!-- Publish scans from best pose at a max of 10 Hz -->
+        <param name="transform_tolerance" value="0.01" />  <!--0.5-->
+        <param name="gui_publish_rate" value="30.0"/>
+        <param name="laser_max_beams" value="30"/>
+        <param name="min_particles" value="1500"/>
+        <param name="max_particles" value="3000"/>
+
+        <!-- translation std dev, m -->
+        <param name="kld_err" value="0.01"/>        <!-- default is 0.01--> 
+        <param name="kld_z" value="0.99"/>          <!-- default is 0.99--> 
+        <param name="odom_alpha1" value="0.2"/>     <!-- default is 0.05-->
+        <param name="odom_alpha2" value="0.4"/>     <!-- default is 0.05-->   
+        <param name="odom_alpha3" value="0.3"/>     <!-- default is 0.05-->   
+        <param name="odom_alpha4" value="0.2"/>     <!-- default is 0.2-->   
+
+        <param name="laser_z_hit" value="0.9"/>                 <!-- default is 0.5-->
+        <param name="laser_sigma_hit" value="0.1"/>             <!-- default is 0.2-->
+        <param name="laser_z_rand" value="0.5"/>                <!-- default is 0.5-->
+        <param name="laser_likelihood_max_dist" value="4.0"/>   <!-- default is 0.2--> 
+
+        <param name="laser_z_short" value="0.05"/>    <!-- default is 0.05-->
+        <param name="laser_z_max" value="0.05"/>      <!-- default is 0.05-->
+        
+        <param name="laser_lambda_short" value="0.1"/>
+        <param name="laser_lambda_short" value="0.1"/>
+        <param name="laser_model_type" value="likelihood_field"/>
+
+        <!-- <param name="laser_model_type" value="beam"/> -->
+        <param name="update_min_d" value="0.01"/>
+        <param name="update_min_a" value="0.01"/>
+        <param name="resample_interval" value="2.0"/>  <!--2-->
+        <param name="transform_tolerance" value="0.1"/>
+        <param name="recovery_alpha_slow" value="0.0"/>
+        <param name="recovery_alpha_fast" value="0.1"/>
+
+        <param name="use_map_topic" value="false"/>
+        <param name="first_map_only" value="false"/>
+        <param name="tf_broadcast" value="true"/>
+
+        <param name="odom_frame_id" value="odom"/>
+        <param name="global_frame_id" value="map"/>
+        <param name="base_frame_id" value="base_link"/>
+        <param name="odom_model_type" value="diff"/>
+
+        <param name="initial_pose_x" value="$(arg init_x)"/>
+        <param name="initial_pose_y" value="$(arg init_y)"/>
+        <param name="initial_pose_a" value="$(arg init_a)"/>
+        <param name="initial_cov_xx" value="0.25" /><!--0.25-->
+        <param name="initial_cov_yy" value="0.25" /><!--0.25-->
+        <param name="initial_cov_aa" value="0.20" /><!--0.20-->
+    </node>
+</launch>

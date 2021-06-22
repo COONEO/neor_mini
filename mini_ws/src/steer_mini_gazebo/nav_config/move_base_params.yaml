@@ -1,0 +1,15 @@
+base_local_planner: "teb_local_planner/TebLocalPlannerROS"   #指定用于move_base的局部规划器名称.  teb_local_planner/TebLocalPlannerROS
+base_global_planner: "global_planner/GlobalPlanner"      #指定用于move_base的全局规划器插件名称.
+#base_local_planner: "base_local_planner/TrajectoryPlannerROS"
+shutdown_costmaps: false      #当move_base在不活动状态时,是否关掉costmap.
+controller_frequency: 10      #向底盘控制移动话题cmd_vel发送命令的频率.0 ~ 100
+controller_patience: 0.1      #在空间清理操作执行前,控制器花多长时间等有效控制下发.
+recovery_behavior_enabled: false
+planner_frequency: 5         #全局规划操作的执行频率.如果设置为0.0,则全局规划器仅在接收到新的目标点或者局部规划器报告路径堵塞时才会重新执行规划操作.
+planner_patience: 4.0        #在空间清理操作执行前,留给规划器多长时间来找出一条有效规划.0 ~ 100
+
+oscillation_timeout: 10.0    #执行修复机制前,允许振荡的时长.
+oscillation_distance: 0.01   #来回运动在多大距离以上不会被认为是振荡.
+
+
+

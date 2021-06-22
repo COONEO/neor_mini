@@ -1,0 +1,15 @@
+<!--
+
+-->
+
+<launch>
+
+  <rosparam command="load" file="$(find robot_localization)/params/dual_ekf_navsat_example.yaml" />
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_odom" clear_params="true">
+    <remap from="/odometry/wheel" to="/ackermann_steering_controller/odom" /> <!-- subscribe odom topic name-->
+    <remap from="/imu/data" to="imu" />                                       <!-- subscribe imu topic name-->
+    <remap from="/odometry/filtered" to="odom"/>                              <!-- publish odom Topic name-->
+  </node>
+
+</launch>
+ 

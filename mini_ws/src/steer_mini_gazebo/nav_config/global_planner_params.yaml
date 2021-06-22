@@ -1,0 +1,15 @@
+GlobalPlanner:
+  allow_unknown: false          #规定是否允许规划者穿越未知空间计划
+  default_tolerance: 0.05        #default
+  visualize_potential: false
+  use_dijkstra: true            #default is true 其他默认，如果这个参数为true的护，规划的路线会比较直，但是在转弯多的情况下，比较僵硬，到达目标的时间比较长 ，设置为false的话就会使用A*规划全局路线，其规划的速度快。
+  use_quadratic: true           #default is true 其他默认，如果这个参数为false的话，规划的路线直线部分会比较直，转弯部分会比较平滑（二次近似法）
+  use_grid_path: false          #default is false 其他默认，如果这个参数为true 的话，规划的路线直线部分会比较直，转弯部分会比较僵硬
+  old_navfn_behavior: false     #default is false 如果想planner准确反馈navfn行为，就需要设置为true
+
+  lethal_cost: 253              #default
+  neutral_cost: 50              #default
+  cost_factor: 3.0              #default
+  publish_potential: true       #default
+  orientation_mode: 0           #default
+  orientation_window_size: 1    #default
