@@ -119,7 +119,7 @@ Step 5 : Using cooneo_office_map to make a navigation demo.
 ```bash
 cd ~/neor_mini/mini_sim18_ws/
 source devel/setup.bash
- roslaunch mini_navigation navigation_steer_mini_sensors.launch                           # start a navigation demo
+roslaunch mini_navigation navigation_steer_mini_sensors.launch                           # start a navigation demo
 ```
 
 ![](pictures/navigation_Demo.png)
@@ -178,7 +178,121 @@ and you will see four new windows ,it's like this:
 
 Congratulations!!! you will see the neor_mini urdf model running automatically using the data from the camera. 
 
-​																																									2021.04.30     
+
+
+## Chapter 3: Velodyne-16 && Lego_LOAM 3D Mapping
+
+![](pictures/face_img.png)
+
+
+
+Step 1: launch velodyne_simulator ROS package,and you will see:
+
+```bash
+# open a Terminal
+cd ~/neor_mini/mini_sim18_ws/     
+source devel/setup.bash
+
+# launch VLP-16
+roslaunch velodyne_description velodyne_16.launch
+```
+
+![](pictures/velodyne_16.png)
+
+
+
+Step 2: Install the Velodyne-16 on the neor_mini
+
+```bash
+# open a Terminal
+cd ~/neor_mini/mini_sim18_ws/     
+source devel/setup.bash
+
+# start launch file and see neor_mini + vlp-16 in Rviz
+roslaunch neor_mini display_gazebo_sensors_VLP16.launch
+```
+
+![](pictures/neor_mini_vlp16_rviz.png)
+
+
+
+Step 3: launch the neor_mini+vlp16 model in Gazebo
+
+```bash
+# open a Terminal and add the museum model world into Gazebo's model folder
+cp -r ~/neor_mini/mini_sim18_ws/src/neor_mini/models/* ~/.gazebo/models/
+
+# open a Terminal
+cd ~/neor_mini/mini_sim18_ws/     
+source devel/setup.bash
+
+# start launch file and see neor_mini + vlp-16 in Gazebo
+roslaunch steer_mini_gazebo steer_mini_sim_sensors_VLP16.launch 
+```
+
+![](pictures/neor_mini_vlp16_Gazebo.png)
+
+*(Gazebo from: iscas_museum.world )*
+
+
+
+Step 4: Record the data collected by VLP-16 in Gazebo
+
+```bash
+# open a Terminal
+cd ~/neor_mini/mini_sim18_ws/     
+source devel/setup.bash
+roslaunch steer_mini_gazebo steer_mini_sim_sensors_VLP16.launch 
+
+# open another Terminal and record VLP-16 data By rosbag
+cd ~/neor_mini/mini_sim18_ws/     
+rosbag record -a
+
+# and then, control the neor_mini traverses the iscas_museum world
+```
+
+![](pictures/record_data_demo.gif)
+
+
+
+Step 5: Play the Record data && Mapping by Lego_Loam
+
+```bash
+# open a Terminal
+cd ~/neor_mini/mini_sim18_ws/     
+source devel/setup.bash
+ roslaunch lego_loam run.launch 
+ 
+ # open another Terminal and "cd" in your bag file folder
+ cd ~/neor_mini/mini_sim18_ws/     
+source devel/setup.bash
+rosbag play  ####.bag         # replace with your own or current bag file's name
+
+# and then,you will see mapping by Leog_loam
+```
+
+![](pictures/lego_loam_record_data.gif)
+
+Congratulations!!! You can run Velodyne-16 Lidar in Gazebo with neor_mini and Mapping by Lego_Loam. 
+
+
+
+The Lego_loam ROS Package from The RobustFieldAutonomyLab.
+
+```bash
+@inproceedings{legoloam2018,
+  title={LeGO-LOAM: Lightweight and Ground-Optimized Lidar Odometry and Mapping on Variable Terrain},
+  author={Shan, Tixiao and Englot, Brendan},
+  booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={4758-4765},
+  year={2018},
+  organization={IEEE}
+}
+```
+
+
+
+​																																									2021.07.30     
 
 ​																																				author:ZhaoXiang Lee
 

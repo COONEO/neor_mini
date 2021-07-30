@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="example">
+  <xacro:arg name="gpu" default="false"/>
+  <xacro:property name="gpu" value="$(arg gpu)" />
+  <xacro:arg name="organize_cloud" default="false"/>
+  <xacro:property name="organize_cloud" value="$(arg organize_cloud)" />
+
+  <!-- Base Footprint -->
+  <link name="base_link" />
+  <!-- Base Link -->
+  <joint name="laser_joint" type="fixed" >
+   <parent link="base_link" />
+    <child link="laser_link" />
+    <origin xyz="0 0 0.05" rpy="0 0 0" />
+  </joint>
+  <link name="laser_link" />
+
+  <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+  <xacro:VLP-16 parent="laser_link" name="velodyne" topic="/velodyne_points" organize_cloud="${organize_cloud}" hz="10" samples="440" gpu="${gpu}">
+    <origin xyz="0 0 0.2" rpy="0 0 0" />
+  </xacro:VLP-16>
+
+  <gazebo reference="laser_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+</robot>
