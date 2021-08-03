@@ -1,0 +1,2 @@
+LeGO-LOAM/LeGO-LOAM:LeGO-LOAM/cloud_msgs:mini_gmapping:mini_navigation:neor_mini:neor_mini_linetrack:steer_drive_ros/steer_bot_hardware_gazebo:steer_drive_ros/steer_drive_controller:steer_drive_ros/steer_drive_ros:steer_drive_ros/stepback_and_steerturn_recovery:steer_mini_gazebo:ultra_avoid_obstacle:velodyne_simulator/velodyne_description:velodyne_simulator/velodyne_gazebo_plugins:velodyne_simulator/velodyne_simulator
+-DCATKIN_DEVEL_PREFIX=/home/lee/neor_mini/mini_sim18_ws/devel -DCMAKE_INSTALL_PREFIX=/home/lee/neor_mini/mini_sim18_ws/install -G Unix Makefiles

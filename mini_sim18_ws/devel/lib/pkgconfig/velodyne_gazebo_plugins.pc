@@ -1,0 +1,8 @@
+prefix=/home/lee/neor_mini/mini_sim18_ws/devel
+
+Name: velodyne_gazebo_plugins
+Description: Description of velodyne_gazebo_plugins
+Version: 1.0.12
+Cflags: -I/home/lee/neor_mini/mini_sim18_ws/src/velodyne_simulator/velodyne_gazebo_plugins/include -I/usr/include -I/usr/include/gazebo-9 -I/usr/include/bullet -I/usr/include/simbody -I/usr/include/sdformat-6.3 -I/usr/include/ignition/math4 -I/usr/include/OGRE -I/usr/include/OGRE/Terrain -I/usr/include/OGRE/Paging -I/usr/include/ignition/transport4 -I/usr/include/ignition/msgs1 -I/usr/include/ignition/common1 -I/usr/include/ignition/fuel_tools1
+Libs: -L${prefix}/lib -lgazebo_ros_velodyne_laser -lgazebo_ros_velodyne_gpu_laser
+Requires: roscpp sensor_msgs gazebo_ros

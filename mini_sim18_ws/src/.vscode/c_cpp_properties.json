@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/lee/neor_mini/mini_sim18_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/lee/neor_mini/mini_sim18_ws/src/LeGO-LOAM/LeGO-LOAM/include/**",
+        "/home/lee/neor_mini/mini_sim18_ws/src/steer_drive_ros/steer_bot_hardware_gazebo/include/**",
+        "/home/lee/neor_mini/mini_sim18_ws/src/steer_drive_ros/steer_drive_controller/include/**",
+        "/home/lee/neor_mini/mini_sim18_ws/src/steer_drive_ros/stepback_and_steerturn_recovery/include/**",
+        "/home/lee/neor_mini/mini_sim18_ws/src/velodyne_simulator/velodyne_gazebo_plugins/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

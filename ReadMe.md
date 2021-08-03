@@ -292,7 +292,51 @@ The Lego_loam ROS Package from The RobustFieldAutonomyLab.
 
 
 
-​																																									2021.07.30     
+## Chapter 4:  Simulation of Automatic Obstacle Avoidance Based on Three-channel Ultrasonic
+
+step 1: Visualization of neor_mini after adding an ultrasonic sensor.
+
+```bash
+# open a Terminal
+cd ~/neor_mini/mini_sim18_ws/     
+source devel/setup.bash            # if failed,please catkin_make all packages
+
+# launchUltrasonars sensors
+roslaunch neor_mini display_gazebo_sensors_ultrasonars.launch
+```
+
+![](pictures/Display_sensor_ultrasonars.png)
+
+
+
+step 2: Start ultrasonic obstacle avoidance simulation in Gazebo (Stop step one)
+
+```bash
+# open one Terminal
+cd ~/neor_mini/mini_sim18_ws/     
+source devel/setup.bash            # if failed,please catkin_make all packages
+
+roslaunch steer_mini_gazebo steer_mini_sim_sensors_ultrasonars.launch 
+```
+
+![](pictures/neor_mini_ultrasonars_gazebos.png)																																									
+
+```bash
+# open another Terminal
+cd ~/neor_mini/mini_sim18_ws/     
+source devel/setup.bash            # if failed,please catkin_make all packages
+
+# launch the ultra_avoid_obstacle node
+roslaunch ultra_avoid_obstacle ultra_avoid_obstacle_node.launch 
+```
+
+![](pictures/neor_mini_ultrasonars_obstrale_avoid.gif)
+
+
+
+Congratulations!!! 
+
+​																																						2021.08.03     
 
 ​																																				author:ZhaoXiang Lee
 

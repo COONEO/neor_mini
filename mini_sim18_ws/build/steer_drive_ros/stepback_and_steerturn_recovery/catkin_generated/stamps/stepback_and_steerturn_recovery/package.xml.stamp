@@ -1,0 +1,32 @@
+<package format="2">
+    <name>stepback_and_steerturn_recovery</name>
+    <version>1.0.0</version>
+    <description>
+
+        This package provides a recovery behavior for the navigation stack which
+        steps back and proceed with a specified steer angle
+
+    </description>
+    <author email="cirkit.infomation@gmail.com">CIR-KIT</author> 
+    <author email="p595201m@mail.kyutech.jp">Masaru Morita</author>
+    <maintainer email="p595201m@mail.kyutech.jp">Masaru Morita</maintainer>
+
+    <license>BSD</license>
+    <url type="repository">https://github.com/CIR-KIT/steer_drive_ros.git</url>
+    <url type="bugtracker">https://github.com/CIR-KIT/steer_drive_ros/issues</url>
+
+    <buildtool_depend>catkin</buildtool_depend>
+    <depend>roscpp</depend>
+    <depend>tf</depend>
+    <depend>costmap_2d</depend>
+    <depend>nav_core</depend>
+    <depend>pluginlib</depend>
+    <depend>eigen</depend>
+    <build_depend>cmake_modules</build_depend>
+    <build_depend>base_local_planner</build_depend>
+
+    <export>
+        <nav_core plugin="${prefix}/stepback_and_steerturn_recovery_plugin.xml" />
+    </export>
+
+</package>

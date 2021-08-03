@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+	<node pkg="ultra_avoid_obstacle" type="ultra_avoid_obstacle_node" name="ultra_avoid_obstacle_node" />
+	<node pkg="rqt_image_view" type="rqt_image_view" name="rqt_image_view" />
+</launch>

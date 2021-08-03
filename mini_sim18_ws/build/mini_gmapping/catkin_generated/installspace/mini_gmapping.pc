@@ -1,0 +1,8 @@
+prefix=/home/lee/neor_mini/mini_sim18_ws/install
+
+Name: mini_gmapping
+Description: Description of mini_gmapping
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
