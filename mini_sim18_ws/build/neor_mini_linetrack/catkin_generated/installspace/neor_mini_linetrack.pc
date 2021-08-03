@@ -1,8 +1,0 @@
-prefix=/home/lee/neor_mini/mini_sim18_ws/install
-
-Name: neor_mini_linetrack
-Description: Description of neor_mini_linetrack
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

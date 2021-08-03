@@ -1,8 +1,0 @@
-prefix=/home/lee/neor_mini/mini_sim18_ws/devel
-
-Name: steer_drive_controller
-Description: Description of steer_drive_controller
-Version: 0.1.0
-Cflags: -I/home/lee/neor_mini/mini_sim18_ws/src/steer_drive_ros/steer_drive_controller/include
-Libs: -L${prefix}/lib -lsteer_drive_controller
-Requires: roscpp angles control_toolbox gazebo_ros_control hardware_interface joint_limits_interface

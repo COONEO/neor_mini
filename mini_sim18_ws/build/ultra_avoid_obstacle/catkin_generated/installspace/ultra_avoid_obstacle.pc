@@ -1,8 +1,0 @@
-prefix=/home/lee/neor_mini/mini_sim18_ws/install
-
-Name: ultra_avoid_obstacle
-Description: Description of ultra_avoid_obstacle
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

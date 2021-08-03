@@ -1,8 +1,0 @@
-prefix=/home/lee/neor_mini/mini_sim18_ws/devel
-
-Name: steer_mini_gazebo
-Description: Description of steer_mini_gazebo
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
