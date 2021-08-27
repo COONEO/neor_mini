@@ -29,8 +29,14 @@ Step 1:
 git clone https://github.com/COONEO/neor_mini.git
 cd neor_mini/mini_sim18_ws
 rosdep install --from-paths src --ignore-src -r -y     # you need wait a moment
-catkin_make
+catkin_make                              
 ```
+
+
+
+###  if   "catkin_make "  error,please install the dependencey of lego_loam(See chapter 3). or remove  LeGO-LOAM folder.
+
+
 
 You can see 5 ROS packages in mini_sim18_ws/src folder,lists:
 
@@ -183,6 +189,22 @@ Congratulations!!! you will see the neor_mini urdf model running automatically u
 ## Chapter 3: Velodyne-16 && Lego_LOAM 3D Mapping
 
 ![](pictures/face_img.png)
+
+
+
+### Lego_loam url:  https://github.com/RobustFieldAutonomyLab/LeGO-LOAM
+
+### install gtsam(Georgia Tech Smoothing and Mapping library, 4.0.0-alpha2)
+
+```bash
+#open a Terminal.
+wget -O ~/Downloads/gtsam.zip https://github.com/borglab/gtsam/archive/4.0.0-alpha2.zip
+cd ~/Downloads/ && unzip gtsam.zip -d ~/Downloads/
+cd ~/Downloads/gtsam-4.0.0-alpha2/
+mkdir build && cd build
+cmake ..
+sudo make install
+```
 
 
 
