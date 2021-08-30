@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TestTensorFlow_Lite" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/TestTensorFlow_Lite" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/TestTensorFlow_Lite" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O3" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-pthread" />
+			<Add directory="/usr/local/include/opencv4" />
+			<Add directory="/home/ubuntu/tensorflow" />
+			<Add directory="/home/ubuntu/tensorflow/tensorflow/lite/tools/make/downloads/flatbuffers/include" />
+			<Add directory="/home/ubuntu/tensorflow/tensorflow/lite/tools/make/downloads/absl" />
+		</Compiler>
+		<Linker>
+			<Add option="`pkg-config --libs --cflags opencv4`" />
+			<Add option="-pthread" />
+			<Add library="../tensorflow/tensorflow/lite/tools/make/gen/linux_aarch64/lib/libtensorflow-lite.a" />
+			<Add library="../tensorflow/tensorflow/lite/tools/make/downloads/flatbuffers/build/libflatbuffers.a" />
+			<Add library="/lib/aarch64-linux-gnu/libdl.so.2" />
+			<Add directory="/home/pi/tensorflow/tensorflow/lite/tools/make/gen/linux_aarch64/lib" />
+			<Add directory="/home/ubuntu/tensorflow/tensorflow/lite/tools/make/gen/linux_aarch64/lib" />
+			<Add directory="/home/ubuntu/tensorflow/tensorflow/lite/tools/make/downloads/flatbuffers/build" />
+			<Add directory="/home/pi/tensorflow/tensorflow/lite/tools/make/downloads/flatbuffers/build" />
+		</Linker>
+		<Unit filename="MobileNetV1.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
