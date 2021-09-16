@@ -1,0 +1,15 @@
+<!-- 
+-->
+<launch> 
+
+  <node name="mini_motor_adaptor" pkg="mini_motor_adaptor" type="mini_motor_adaptor_node" />
+  
+  <!-- load cooneo_mini urdf model-->
+  <param name="robot_description" textfile="$(find cooneo_mini)/urdf/cooneo_mini_with_sensors.urdf" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mini_motor_adaptor)/rviz/mini_motor_adaptor.rviz" />
+
+ 
+</launch>

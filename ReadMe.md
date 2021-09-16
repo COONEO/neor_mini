@@ -1,6 +1,62 @@
-# Neor mini Simulation Tutorials
+# Neor_mini Ackerman Mobile Base
+
+## Description:
+
+​	Neor_mini is a mobile base with an Ackerman steering structure, equipped with ROS operating system, which can realize 2D and 3D mapping and navigation demonstration functions. This document will teach you how to start from the perspective of simulation and real vehicles. Started to build an Ackerman ROS car. The content involved: URDF ROS Ackerman odometer drive, mapping, navigation demonstration, camera patrol, multi-ultrasonic obstacle avoidance, VLP 16-line radar 3D mapping, Examples of camera calibration, Raspberry Pi monocular recognition and range, etc.
+
+ 	Also includes ROS entry and advanced tutorials based on the Neo_mini physical car. Follow-up will continue to update, welcome to pay attention to our maintenance official account and this warehouse...
+
+​	(Neor_mini 是一台阿克曼转向结构的移动底座，搭载了ROS操作系统，可以实现2D与3D建图以及导航的演示功能。本文档将会从仿真和实车的角度教你如何从零开始搭建一台阿克曼ROS小车，涉及的内容有：URDF ROS阿克曼里程计驱动、gmapping建图、navigation导航演示、摄像头巡线、多超声波避障、VLP 16线雷达的三维建图、摄像头校准、树莓派单目识别与测距等示例。另外还包括基于Neor_mini 实体车的ROS入门及进阶教程。后续将持续更新，欢迎关注我们的维系公众号以及本仓库...)
+
+
+
+## Contents:
+
+#### 	1.Neor mini Simulation Tutorials (neor_mini 全套仿真教程)
+
+​		Chapter 1: Make a indoor autonomous mobile robot.
+
+​		Chapter 2: Make a outdoor line-tracking mobile robot.
+
+​		Chapter 3: Velodyne-16 && Lego_LOAM 3D Mapping. 		
+
+​	    Chapter 4:  Simulation of Automatic Obstacle Avoidance Based on Three-channel Ultrasonic.				
+
+Related folders:
+
+​		**mini_sim18_ws && original_neor_mini**
+
+​				
+
+#### 	2.Raspberry Pi camera calibration (树莓派摄像头校准)
+
+​	Related folders:
+
+​		**calib_camera**
+
+​	
+
+#### 	3.Raspberry Pi camera recognition and ranging (树莓派单目摄像头目标检测与测距)
+
+​	Related folders:		
+
+​		**Object_detection _&&_ Distence**
+
+
+
+#### 	4.Neor_min_ROS_Tutorials (neor_mini ROS 入门及进阶教程)
+
+​	Related folders:		
+
+​		**Neor_min_ROS_Tutorials**
+
+
 
 ## Chapter 1: Make a indoor autonomous mobile robot
+
+### 	Corresponding WeChat article
+
+![](pictures/01_title.png)
 
 ![](pictures/neor_mini_gazebo.png)
 
@@ -136,6 +192,10 @@ When you run up the list launch file, your monitor will show two windows, one is
 
 ## Chapter 2: Make a outdoor line-tracking mobile robot
 
+### 	Corresponding WeChat article
+
+![](pictures/02_title.png)
+
 ![](pictures/new_neor_mini.png)
 
 
@@ -187,6 +247,10 @@ Congratulations!!! you will see the neor_mini urdf model running automatically u
 
 
 ## Chapter 3: Velodyne-16 && Lego_LOAM 3D Mapping
+
+### 	Corresponding WeChat article
+
+![](pictures/03_title.png)
 
 ![](pictures/face_img.png)
 
@@ -316,6 +380,10 @@ The Lego_loam ROS Package from The RobustFieldAutonomyLab.
 
 ## Chapter 4:  Simulation of Automatic Obstacle Avoidance Based on Three-channel Ultrasonic
 
+### 	Corresponding WeChat article
+
+![](pictures/04_title.png)
+
 step 1: Visualization of neor_mini after adding an ultrasonic sensor.
 
 ```bash
@@ -358,9 +426,9 @@ roslaunch ultra_avoid_obstacle ultra_avoid_obstacle_node.launch
 
 Congratulations!!! 
 
-​																																						2021.08.03     
+​																																					2021.09.17     
 
-​																																				author:ZhaoXiang Lee
+​																																		author:ZhaoXiang Li
 
 COONEO Co.,Ltd
 
