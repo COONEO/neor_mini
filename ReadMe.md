@@ -22,6 +22,8 @@
 
 ​	    Chapter 4:  Simulation of Automatic Obstacle Avoidance Based on Three-channel Ultrasonic.				
 
+​		Chapter 5:  Send the Goal to navigation through the ROS node.
+
 Related folders:
 
 ​		**mini_sim18_ws && original_neor_mini**
@@ -422,11 +424,49 @@ roslaunch ultra_avoid_obstacle ultra_avoid_obstacle_node.launch
 
 ![](pictures/neor_mini_ultrasonars_obstrale_avoid.gif)
 
+Congratulations!!! 
+
+
+
+## Chapter 5:  Send the Goal to navigation through the ROS node
+
+### Corresponding WeChat article
+
+![](pictures/05_title.png)
+
+Step 1 : launch mini_navigation launch file.
+
+```bash
+# open a terminal
+cd ~/neor_mini/mini_sim18_ws
+catkin_make
+source devel/setup.bash
+roslaunch mini_navigation navigation_steer_mini_sensors.launch
+```
+
+![](pictures/navigation_Demo.png)
+
+
+
+Step 2 : rosrun the send_goals ROS node.
+
+```bash
+# open another terminal "ctrl + shift +t" (Recommend)
+source devel/setup.bash 
+rosrun send_goals send_goals_node
+```
+
+![](pictures/send_goals.png)
+
 
 
 Congratulations!!! 
 
-​																																					2021.09.17     
+
+
+
+
+​																																		      2021.09.19     
 
 ​																																		author:ZhaoXiang Li
 
@@ -441,5 +481,11 @@ E: cooneo@outlook.com
 For more details,you can search "COONEO" in your WeChat.
 
 ![](pictures/COONEO_wechat.jpg)
+
+
+
+For more tutorials'video, please search "COONEO" in your Bilibli App.
+
+![](pictures/B站face.jpeg)
 
 # neor_mini
