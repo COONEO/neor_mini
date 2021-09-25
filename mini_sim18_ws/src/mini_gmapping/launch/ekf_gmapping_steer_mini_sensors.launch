@@ -1,0 +1,29 @@
+<launch>
+   
+    <!--  launch steer_mini_gazebo model node -->
+    <include file="$(find steer_mini_gazebo)/mini_gazebo/launch/steer_mini_sim_sensors.launch" />
+
+    <!-- load robot_pose_ekf  node -->
+    <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
+      <param name="output_frame" value="odom"/>
+      <param name="freq" value="30.0"/>
+      <param name="sensor_timeout" value="1.0"/>
+      <param name="odom_used" value="true"/>
+      <param name="imu_used" value="true"/>
+      <param name="vo_used" value="false"/>
+      <param name="debug" value="false"/>
+      <param name="self_diagnose" value="false"/> 
+      <remap from="imu_data" to="imu" />
+      <remap from="odom" to= "/ackermann_steering_controller/odom"/>
+    </node>
+
+    <!--  launch gmapping node -->
+    <include file="$(find mini_gmapping)/launch/gmapping.launch" />
+    
+    <!-- Load model into Rviz and Load Rviz configuration file into rviz-->
+    <param name="robot_description" textfile="$(find neor_mini)/urdf/neor_mini_gazebo_sensors.urdf" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mini_gmapping)/rviz/gmapping_rviz.rviz" />
+
+   <node name="base_link_footprint" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 base_footprint base_link 40 " />
+
+</launch>
