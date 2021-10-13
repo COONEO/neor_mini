@@ -54,10 +54,12 @@
   <build_export_depend>gmapping</build_export_depend>
   <build_export_depend>robot_localization</build_export_depend>
   <build_export_depend>map_server</build_export_depend>
+  <build_export_depend>hector_slam</build_export_depend>
   <exec_depend>map_server</exec_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>gmapping</exec_depend>
   <exec_depend>robot_localization</exec_depend>
+  <exec_depend>hector_slam</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

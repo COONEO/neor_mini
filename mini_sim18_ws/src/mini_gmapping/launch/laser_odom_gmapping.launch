@@ -1,0 +1,15 @@
+<launch>
+
+    <!--  launch steer_mini_gazebo model node -->
+    <include file="$(find steer_mini_gazebo)/mini_gazebo/launch/steer_mini_sim_sensors_with_other_world.launch" />
+
+    <!--  launch rf2o_laser_odometry node -->
+    <include file="$(find rf2o_laser_odometry)/launch/laser_odometry.launch" />
+    
+    <!--  launch gmapping node -->
+    <include file="$(find mini_gmapping)/launch/gmapping_laser_odom.launch" />
+
+    <!-- Load model into Rviz and Load Rviz configuration file into rviz-->
+    <param name="robot_description" textfile="$(find neor_mini)/urdf/neor_mini_gazebo_sensors.urdf" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mini_gmapping)/rviz/gmapping_rviz.rviz" />
+</launch>

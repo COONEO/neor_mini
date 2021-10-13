@@ -1,12 +1,6 @@
 # Neor_mini Ackerman Mobile Base
 
-## Description:
-
-​	Neor_mini is a mobile base with an Ackerman steering structure, equipped with ROS operating system, which can realize 2D and 3D mapping and navigation demonstration functions. This document will teach you how to start from the perspective of simulation and real vehicles. Started to build an Ackerman ROS car. The content involved: URDF ROS Ackerman odometer drive, mapping, navigation demonstration, camera patrol, multi-ultrasonic obstacle avoidance, VLP 16-line radar 3D mapping, Examples of camera calibration, Raspberry Pi monocular recognition and range, etc.
-
-​	Also includes ROS entry and advanced tutorials based on the Neo_mini physical car. Follow-up will continue to update, welcome to pay attention to our maintenance official account and this warehouse...
-
-​	(Neor_mini 是一台阿克曼转向结构的移动底座，搭载了ROS操作系统，可以实现2D与3D建图以及导航的演示功能。本文档将会从仿真和实车的角度教你如何从零开始搭建一台阿克曼ROS小车，涉及的内容有：URDF ROS阿克曼里程计驱动、gmapping建图、navigation导航演示、摄像头巡线、多超声波避障、VLP 16线雷达的三维建图、摄像头校准、树莓派单目识别与测距等示例。另外还包括基于Neor_mini 实体车的ROS入门及进阶教程。后续将持续更新，欢迎关注我们的微信公众号以及本仓库...)
+![](pictures/neor_mini_U.jpeg)
 
 
 
@@ -24,7 +18,11 @@
 
 ​		Chapter 5:  Send the Goal to navigation through the ROS node.
 
-Related folders:
+​		Chapter 6: Hector_mapping 
+
+​		Chapter 7: rf2o_laser_odometry && gmapping
+
+Related folders（相关目录）:
 
 ​		**mini_sim18_ws && original_neor_mini**
 
@@ -32,7 +30,7 @@ Related folders:
 
 #### 	2.Raspberry Pi camera calibration (树莓派摄像头校准)
 
-​	Related folders:
+​	Related folders（相关目录）:
 
 ​		**calib_camera**
 
@@ -40,7 +38,7 @@ Related folders:
 
 #### 	3.Raspberry Pi camera recognition and ranging (树莓派单目摄像头目标检测与测距)
 
-​	Related folders:		
+​	Related folders（相关目录）:		
 
 ​		**Object_detection _&&_ Distence**
 
@@ -48,7 +46,7 @@ Related folders:
 
 #### 	4.Neor_min_ROS_Tutorials (neor_mini ROS 入门及进阶教程)
 
-​	Related folders:		
+​	Related folders（相关目录）:		
 
 ​		**Neor_min_ROS_Tutorials**
 
@@ -458,15 +456,102 @@ rosrun send_goals send_goals_node
 
 ![](pictures/send_goals.png)
 
-
-
 Congratulations!!! 
 
 
 
 
 
-​																																		      2021.09.19     
+## Chapter 6: Hector_mapping 
+
+Corresponding WeChat article
+
+![](pictures/06_07_title.png)
+
+Step 1 : launch hector_mapping.launch 
+
+```bash
+# # open a terminal
+cd ~/neor_mini/mini_sim18_ws
+rosdep install --from-paths src --ignore-src -r -y     # you need wait a moment
+catkin_make
+source devel/setup.bash
+roslaunch mini_gmapping hector_mapping.launch
+```
+
+![](pictures/hector_mapping.gif)
+
+Congratulations!!! 
+
+Details paper:
+
+```bash
+@INPROCEEDINGS{KohlbrecherMeyerStrykKlingaufFlexibleSlamSystem2011,
+  author = {S. Kohlbrecher and J. Meyer and O. von Stryk and U. Klingauf},
+  title = {A Flexible and Scalable SLAM System with Full 3D Motion Estimation},
+  year = {2011},
+  month = {November},
+  booktitle = {Proc. IEEE International Symposium on Safety, Security and Rescue Robotics (SSRR)},
+  organization = {IEEE},
+}
+```
+
+
+
+## Chapter 7: rf2o_laser_odometry && gmapping
+
+Corresponding WeChat article
+
+![](pictures/06_07_title.png)
+
+Step 1 : Find neor_mini_gazebo_sensors.urdf file, and replace the lidar scan frequency with 5. 
+
+```xml
+# the detiles blow: cd neor_mini/mini_sim18_ws/src/neor_mini/urdf && vim neor_mini_gazebo_sensors.urdf
+...
+<gazebo reference="laser_link">
+  <sensor type="ray" name="Top_laser_sensor">
+    <visualize>false</visualize>   <!-- visual or unvisual laser ray :true or false-->
+    <update_rate>40</update_rate> <!-- 默认是 40，修改为 5 Hz -->
+...
+```
+
+
+
+Step 2 : Find the steer_mini_sim_sensors_with_other_world.launch , and replace the world file with "cooneo_rooom2.world"
+
+```xml
+# cd neor_mini/mini_sim18_ws/src/steer_mini_gazebo/mini_gazebo/launch 
+# vim steer_mini_sim_sensors_with_other_world.launch
+<!--Load the surrounding environment into Gazebo-->
+<include file="$(find gazebo_ros)/launch/empty_world.launch" >
+    <arg name="world_name" value="$(find neor_mini)/worlds/cooneo_room2.world"/> 
+</include>
+...
+```
+
+
+
+Step 3 : launch rf2o_laser_odometry and gmapping node.
+
+```bash
+#open a terminal
+cd ~/neor_mini/mini_sim18_ws
+rosdep install --from-paths src --ignore-src -r -y     # you need wait a moment
+catkin_make
+source devel/setup.bash
+roslaunch mini_gmapping laser_odom_gmapping.launch
+```
+
+![](pictures/rf2o_laser_odometry_gmapping.gif)
+
+Congratulations!!! 
+
+Thinks for [MAPIRlab](https://github.com/MAPIRlab)/**[rf2o_laser_odometry](https://github.com/MAPIRlab/rf2o_laser_odometry)**  !!!
+
+
+
+​																																		      2021.010.13     
 
 ​																																		author:ZhaoXiang Li
 
@@ -484,7 +569,7 @@ For more details,you can search "COONEO" in your WeChat.
 
 
 
-For more tutorials'video, please search "COONEO" in your Bilibli App.
+For more tutorials'video, please search "COONEO" in your Bilibili App.
 
 ![](pictures/B站face.jpeg)
 

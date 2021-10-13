@@ -598,8 +598,8 @@
   <!-- add laser simulation plugines adaptored for rplidar A1M8 -->
   <gazebo reference="laser_link">
     <sensor type="ray" name="Top_laser_sensor">
-      <visualize>false</visualize>
-      <update_rate>40</update_rate>
+      <visualize>false</visualize>   <!-- visual or unvisual laser ray :true or false-->
+      <update_rate>40</update_rate> <!-- default is : 40. change the update_rate to 5 hz for your rf2o_laser_odometry mapping -->
       <ray>
         <scan>
           <horizontal>
