@@ -16,7 +16,7 @@
 
 ​	    Chapter 4:  Simulation of Automatic Obstacle Avoidance Based on Three-channel Ultrasonic.				
 
-​		Chapter 5:  Send the Goal to navigation through the ROS node.
+​		Chapter 5:  Send the Goal to navigation through the ROS node (C++ && Python).
 
 ​		Chapter 6: Hector_mapping 
 
@@ -432,6 +432,8 @@ Congratulations!!!
 
 ![](pictures/05_title.png)
 
+![](pictures/05_2_title.png)
+
 Step 1 : launch mini_navigation launch file.
 
 ```bash
@@ -446,7 +448,7 @@ roslaunch mini_navigation navigation_steer_mini_sensors.launch
 
 
 
-Step 2 : rosrun the send_goals ROS node.
+Step 2 : rosrun the send_goals ROS node.   (**C++ ROS node**)
 
 ```bash
 # open another terminal "ctrl + shift +t" (Recommend)
@@ -456,9 +458,20 @@ rosrun send_goals send_goals_node
 
 ![](pictures/send_goals.png)
 
+
+
+Step 3 :  rosrun the send_goals_python.py file (**Python ROS node**)
+
+```bash
+# open another terminal "ctrl + shift +t" (Recommend)
+source devel/setup.bash
+sudo chmod 0777 src/send_goals/scripts/send_goals_python.py
+rosrun send_goals send_goals_python.py
+```
+
+![](pictures/send_goals_python_pic.png)
+
 Congratulations!!! 
-
-
 
 
 

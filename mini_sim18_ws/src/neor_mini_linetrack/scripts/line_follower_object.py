@@ -49,11 +49,11 @@ class LineFollower(object):
   
         #Calculate centroid of the blob of binary image using imageMoments
         m = cv2.moments(mask,False)
-        try:
+        try: 
             cx, cy = m['m10']/m['m00'], m['m01']/m['m00']
         except ZeroDivisionError:
                 cx, cy = height/2, width/2
-      
+       
         # Draw the centroid in the resultut image
         cv2.circle(res , (int(cx) , int(cy)) , 20 , (255,255,0) , 2)
         cv2.waitKey(30)

@@ -52,9 +52,12 @@
   <build_depend>actionlib</build_depend>
   <build_depend>move_base_msgs</build_depend>
   <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
   <build_export_depend>actionlib</build_export_depend>
   <build_export_depend>move_base_msgs</build_export_depend>
   <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <exec_depend>rospy</exec_depend>
   <exec_depend>actionlib</exec_depend>
   <exec_depend>move_base_msgs</exec_depend>
   <exec_depend>roscpp</exec_depend>

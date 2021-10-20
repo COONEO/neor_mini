@@ -16,7 +16,7 @@ int main(int argc, char** argv){
     move_base_msgs::MoveBaseGoal goal[4];
 
     // 第一个待发送的 目标点 在 map 坐标系下的坐标位置
-    goal[0].target_pose.pose.position.x = 1.84500110149;
+    goal[0].target_pose.pose.position.x = 1.84500110149; 
     goal[0].target_pose.pose.position.y =  -0.883078575134;
     goal[0].target_pose.pose.orientation.z =  -0.306595935327;  
     goal[0].target_pose.pose.orientation.w = 0.951839761956;  
@@ -56,7 +56,7 @@ int main(int argc, char** argv){
                      ROS_INFO("Send NO. %d Goal !!!", 4-goal_number );
                 break;
             case 2:
-                     goal[4 -goal_number].target_pose.header.frame_id = "map";
+                     goal[4 -goal_number].target_pose.header.frame_id = "map";   
                      goal[4 -goal_number].target_pose.header.stamp = ros::Time::now();
                      ac.sendGoal(goal[4 -goal_number]);
                      ROS_INFO("Send NO. %d Goal !!!", 4-goal_number );
