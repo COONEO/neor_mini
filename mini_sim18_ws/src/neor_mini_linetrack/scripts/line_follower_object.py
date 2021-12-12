@@ -36,8 +36,8 @@ class LineFollower(object):
         cv2.imshow("HSV",hsv)
 
         # yellow colour in HSV
-        lower_yellow = np.array([0,225,225])
-        upper_yellow = np.array([91,255,255])
+        lower_yellow = np.array([20,50,50])
+        upper_yellow = np.array([30,255,255])
 
         #Threshold the HSV image to get only yellow colors
         mask = cv2.inRange(hsv,lower_yellow,upper_yellow)
