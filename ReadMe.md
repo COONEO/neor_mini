@@ -85,7 +85,9 @@ Step 1:
 git clone https://github.com/COONEO/neor_mini.git
 cd neor_mini/mini_sim18_ws
 rosdep install --from-paths src --ignore-src -r -y     # you need wait a moment
-catkin_make                              
+
+# first see the below tips .
+catkin_make                              # if failed,please retry again and again
 ```
 
 
@@ -268,6 +270,9 @@ cd ~/Downloads/gtsam-4.0.0-alpha2/
 mkdir build && cd build
 cmake ..
 sudo make install
+
+# copy the libmetis.so library into /usr/lib/ folder.   !!!!!!!
+sudo cp /usr/local/lib/libmetis.so /usr/lib
 ```
 
 
