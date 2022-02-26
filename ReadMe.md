@@ -22,6 +22,8 @@
 
 ​		Chapter 7: rf2o_laser_odometry && gmapping
 
+​		Chapter 8: Velodyne-16 && lio_sam 3D Mappig
+
 Related folders（相关目录）:
 
 ​		**mini_sim18_ws && original_neor_mini**
@@ -92,7 +94,7 @@ catkin_make                              # if failed,please retry again and agai
 
 
 
-###  if   "catkin_make "  error,please install the dependencey of lego_loam(See chapter 3). or remove  LeGO-LOAM folder.
+###  if   "catkin_make "  error,please install the dependencey of lego_loam(See chapter 3) and lio_sam(See chapter 8). or remove  LeGO-LOAM && lio_sam folder.
 
 
 
@@ -569,7 +571,84 @@ Thinks for [MAPIRlab](https://github.com/MAPIRlab)/**[rf2o_laser_odometry](https
 
 
 
-​																																		      2021.010.13     
+## Chapter 8:  Velodyne-16 && lio_sam 3D Mappig
+
+Step 1 : install the dependence of the lio_sam，follow as below:
+
+**·** gtsam(Georiga Tech Smoothing and Mapping library)
+
+```bash
+sudo add-apt-repository ppa:borglab/gtsam-release-4.0
+sudo apt update
+sudo apt install libgtsam-dev libgtsam-unstable-dev
+```
+
+or see the lio_sam git.
+
+```bash
+https://github.com/TixiaoShan/LIO-SAM.git
+```
+
+
+
+Step 2 : recording the vlp-16 && imu data in Gazebo By rosbag .
+
+```bash
+# open a new Terminal
+cd neor_mini/mini_sim18_ws/
+catkin_make
+source devel/setup.bash
+roslaunch steer_mini_gazebo steer_mini_sim_sensors_VLP16_lio_sam.launch
+
+# open another Terminal
+rosbag record -a
+
+# moving the neor_mini by rqt_robot_steering plugines.
+```
+
+this step is same as the chapter 3 .
+
+
+
+Step 3: play your recording bag ,and run lio_sam to 3D-Mapping.
+
+```bash
+# open a new Terminal
+cd neor_mini/mini_sim18_ws/
+catkin_make
+source devel/setup.bash
+roslaunch lio_sam run_neor_mini.launch
+
+#open another terminal
+cd  your_bag_saved_folder
+rosbag play -r 5 yourbag_name.bag
+```
+
+
+
+![](pictures/lio_sam_mapping.gif)
+
+
+
+```bash
+@inproceedings{liosam2020shan,
+title={LIO-SAM: Tightly-coupled Lidar Inertial Odometry via Smoothing and Mapping},
+author={Shan, Tixiao and Englot, Brendan and Meyers, Drew and Wang, Wei and Ratti, Carlo and Rus
+Daniela},
+booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+pages={5135-5142},
+year={2020},
+organization={IEEE}
+}
+```
+
+**Thank you very much for Tixiaoshan && iscas_museum.**
+
+
+
+
+
+​																																		      2022.02.26     
 
 ​																																		author:ZhaoXiang Li
 
