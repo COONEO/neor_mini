@@ -239,6 +239,9 @@ Step 3: rosrun line-tracking python node
 # open a Terminal
 cd ~/neor_mini/mini_sim18_ws/
 source devel/setup.bash
+
+# may need to add permission to .py file
+sudo chmod +x src/neor_mini_linetrack/scripts/line_follower_object.py       # same as hsv_color_select.py file
 rosrun neor_mini_linetrack line_follower_object.py
 ```
 
@@ -247,6 +250,16 @@ and you will see four new windows ,it's like this:
 ![](pictures/line-tracking_start_success.png)
 
 Congratulations!!! you will see the neor_mini urdf model running automatically using the data from the camera. 
+
+
+
+Ps. select your own hsv color 
+
+When your running result is different from the above, you can select the hsv color range suitable for you.
+
+
+
+
 
 
 
@@ -646,11 +659,15 @@ organization={IEEE}
 
 
 
+our new Arduino Ackermann ROS CAR.
 
 
-​																																		      2022.02.26     
 
-​																																		author:ZhaoXiang Li
+![](pictures/neor_mini_arduino.jpg)																																		    
+
+​																														2022.04.17     
+
+​																														author:ZhaoXiang Li && COONEO
 
 COONEO Co.,Ltd
 
@@ -668,6 +685,6 @@ For more details,you can search "COONEO" in your WeChat.
 
 For more tutorials'video, please search "COONEO" in your Bilibili App.
 
-![](pictures/B站face.jpeg)
+![](pictures/bilibili.jpg)
 
 # neor_mini
