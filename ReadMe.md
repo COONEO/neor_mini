@@ -4,6 +4,11 @@
 
 
 
+Platform:
+           Ubuntu 18.04 + ros-melodic-desktop-full
+           Some chapters may require a computer with sufficient computing power.
+
+
 ## Contents:
 
 #### 	1.Neor mini Simulation Tutorials (neor_mini 全套仿真教程)
