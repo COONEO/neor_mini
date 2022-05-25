@@ -4,9 +4,9 @@
 
 
 
-Platform:
-           Ubuntu 18.04 + ros-melodic-desktop-full
-           Some chapters may require a computer with sufficient computing power.
+**平台要求（Platform）**:
+           **Ubuntu 18.04 + ros-melodic-desktop-full**
+           **某些章节的应用可能对电脑的性能要求较高**（Some chapters may require a computer with sufficient computing power.）
 
 
 ## Contents:
