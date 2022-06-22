@@ -1,0 +1,320 @@
+<robot name="neor_mini_foxy" xmlns:xacro="http://ros.org/wiki/xacro"> 
+  
+  <link name="base_link">
+    <!-- avoid root link inertia warnings, annotation -->
+    <inertial>
+      <origin
+        xyz="0.030649671440691 -1.79069899872708E-05 0.0558717976709459"
+        rpy="0 0 0" />
+      <mass
+        value="1.72617713171385" />
+      <inertia
+        ixx="0.0107311274569357"
+        ixy="-3.24164649120244E-08"
+        ixz="0.00169188715816868"
+        iyy="0.0198871551919603"
+        iyz="2.40252669081509E-07"
+        izz="0.0269841937242323" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(neor_mini_foxy)/meshes/base_link.STL" />
+      </geometry>
+      <material name="">
+      <color rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" /> 
+      </material> 
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(neor_mini_foxy)/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="left_rear_link">
+    <inertial>
+      <origin
+        xyz="7.85229659072684E-11 -0.0196762547002777 4.85059770127805E-11"
+        rpy="0 0 0" />
+      <mass
+        value="0.29556182905038" />
+      <inertia
+        ixx="0.000374087423652291"
+        ixy="2.19336154342606E-13"
+        ixz="-5.50404301757561E-12"
+        iyy="0.000661017199375587"
+        iyz="-5.10049385981967E-14"
+        izz="0.000374087441459994" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(neor_mini_foxy)/meshes/left_rear_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(neor_mini_foxy)/meshes/left_rear_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="left_rear_joint" type="continuous">
+    <origin
+      xyz="-0.181499999999595 0.228542434993694 0.0399999999991634"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_rear_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+  <link name="right_rear_link">
+    <inertial>
+      <origin
+        xyz="7.8521189550429E-11 0.0196762545376323 3.35983463273237E-11"
+        rpy="0 0 0" />
+      <mass
+        value="0.295561829050389" />
+      <inertia
+        ixx="0.000374087423652306"
+        ixy="-2.1933774523493E-13"
+        ixz="5.50404145624456E-12"
+        iyy="0.000661017199375601"
+        iyz="-5.10073974604221E-14"
+        izz="0.000374087441459995" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(neor_mini_foxy)/meshes/right_rear_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(neor_mini_foxy)/meshes/right_rear_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_rear_joint" type="continuous">
+    <origin
+      xyz="-0.181499999999595 -0.228542434994426 0.0399999999991584"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_rear_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  
+ <!-- In order to fit ackermann simulation plugins's request,amend the front steer link and it's joint -->
+ <link name="front_steer_right_link">
+ <!--  remember add inertial  label,if not,and it can't visual on gazebo-->
+ <inertial>  
+      <origin xyz="9.44636555644252E-08 -0.000295273745285485 -8.13046296954667E-11" rpy="0 0 0" />
+      <mass value="0.296315811300368" /> 
+      <inertia
+        ixx="0.000374692013709393"
+        ixy="-9.17172260383823E-08"
+        ixz="-2.43187512356516E-12"
+        iyy="0.000661029987747155"
+        iyz="1.9736939507106E-13"
+        izz="0.000374691963930348" />
+    </inertial>
+   <visual>
+     <geometry>
+       <cylinder length="0.001" radius="0.005"/>
+     </geometry>
+     <origin rpy="0 0 0"  xyz="0 0 0" />
+     <material name=""> 
+          <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+     </material>
+   </visual>
+   <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+       <cylinder length="0.001" radius="0.005"/>
+      </geometry>
+    </collision>
+ </link>
+ <joint name="front_steer_right_joint" type="revolute">
+    <origin rpy="0 0 0"  xyz="0.17 -0.21 0.102" />
+    <parent link="base_link" />
+    <child link="front_steer_right_link" />
+    <axis xyz="0 0 1" />     <!-- charge steer direction default is 0 0 1-->
+    <limit lower="-0.69" upper="0.69" effort="0" velocity="0" />
+ </joint>
+ <!-- ************************************************************************************* -->
+
+  <link name="front_right_wheel_link">
+    <inertial>
+      <origin
+        xyz="9.44636555644252E-08 -0.000295273745285485 -8.13046296954667E-11"
+        rpy="0 0 0" />
+      <mass
+        value="0.296315811300368" />
+      <inertia
+        ixx="0.000374692013709393"
+        ixy="-9.17172260383823E-08"
+        ixz="-2.43187512356516E-12"
+        iyy="0.000661029987747155"
+        iyz="1.9736939507106E-13"
+        izz="0.000374691963930348" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(neor_mini_foxy)/meshes/front_right_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(neor_mini_foxy)/meshes/front_right_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="front_right_wheel_joint" type="continuous">
+    <origin xyz="0 0 -0.06" rpy="0 0 0" />   <!-- amend the position between steer_right_link and front right wheel-->
+    <parent link="front_steer_right_link" />
+    <child  link="front_right_wheel_link" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+ <!-- In order to fit ackermann simulation plugins's request,amend the front steer link and it's joint -->
+ <link name="front_steer_left_link">
+ <!--  remember add inertial  label,if not,and it can't visual on gazebo-->
+    <inertial> 
+      <origin xyz="9.44636555644252E-08 -0.000295273745285485 -8.13046296954667E-11" rpy="0 0 0" />
+      <mass value="0.296315811300368" /> 
+      <inertia
+        ixx="0.000374692013709393"
+        ixy="-9.17172260383823E-08"
+        ixz="-2.43187512356516E-12"
+        iyy="0.000661029987747155"
+        iyz="1.9736939507106E-13"
+        izz="0.000374691963930348" />
+    </inertial>
+   <visual>
+     <geometry>
+       <cylinder length="0.001" radius="0.005"/>
+     </geometry>
+     <origin rpy="0 0 0"  xyz="0 0 0" />
+   </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+       <cylinder length="0.001" radius="0.005"/>
+      </geometry>
+    </collision>
+ </link>
+ <joint name="front_steer_left_joint" type="revolute">
+    <origin rpy="0 0 0"  xyz="0.17 0.21 0.102" />
+    <parent link="base_link" />
+    <child link="front_steer_left_link" />
+    <axis xyz="0 0 1" />  <!-- charge steer direction default is 0 0 1-->
+    <limit lower="-0.69" upper="0.69" effort="0" velocity="0" />
+ </joint>
+ <!-- ************************************************************************************* -->
+
+  <link name="front_left_wheel_link">
+    <inertial>
+      <origin
+        xyz="-3.99413835339146E-11 0.000295273997845347 1.08602016268833E-10"
+        rpy="0 0 0" />
+      <mass
+        value="0.296315811293944" />
+      <inertia
+        ixx="0.00037469197851121"
+        ixy="-1.84493877596723E-13"
+        ixz="-9.50756757097929E-12"
+        iyy="0.00066103001709398"
+        iyz="-1.17866882205563E-13"
+        izz="0.000374691969713977" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(neor_mini_foxy)/meshes/front_left_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(neor_mini_foxy)/meshes/front_left_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="front_left_wheel_joint" type="continuous">
+    <origin xyz="0 0 -0.06" rpy="0 0 0" />      <!-- amend the position between steer_left_link and front left wheel-->
+    <parent link="front_steer_left_link" />
+    <child link="front_left_wheel_link" />
+    <axis xyz="0 1 0" /> 
+  </joint>
+
+</robot>

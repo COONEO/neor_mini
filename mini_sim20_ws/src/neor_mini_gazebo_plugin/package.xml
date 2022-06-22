@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>neor_mini_gazebo_plugin</name>
+  <version>0.1.0</version>
+  <description>
+    Plugin to interact with the neor_mini Gazebo model
+  </description>
+  <maintainer email="xxx@xx.com">zhaoxiangli</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>gazebo_ros</depend>
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>rqt_robot_steering</depend> 
+  <depend>ackermann_msgs</depend>
+  <depend>gazebo_ros_pkgs</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <gazebo_ros plugin_path="${prefix}" />
+  </export>
+</package>
