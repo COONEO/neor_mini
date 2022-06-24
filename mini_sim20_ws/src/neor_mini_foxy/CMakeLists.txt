@@ -48,8 +48,6 @@ if(BUILD_TESTING)
 )
 endif()
 
-
-
 install(
   PROGRAMS
     scripts/spawn_bot.py
@@ -60,7 +58,6 @@ install(
 install(
   DIRECTORY
     launch
-    config
     urdf
     worlds
     scripts

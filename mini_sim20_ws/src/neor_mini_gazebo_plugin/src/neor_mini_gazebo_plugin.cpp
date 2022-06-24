@@ -87,8 +87,6 @@ void CarGazeboPlugin::Load(gazebo::physics::ModelPtr model, sdf::ElementPtr sdf)
   jc->SetVelocityPID(br_axle_joint->GetScopedName(), br_pid);
 
   // publish
-  odo_fl_pub = ros_node_->create_publisher<std_msgs::msg::Int32>("/" + model_->GetName() + "/odo_fl", 10);
-  odo_fr_pub = ros_node_->create_publisher<std_msgs::msg::Int32>("/" + model_->GetName() + "/odo_fr", 10);
   ackermann_pub = ros_node_->create_publisher<ackermann_msgs::msg::AckermannDriveStamped>("/" + model_->GetName() + "/cmd_ackermann", 10);
   pose_pub = ros_node_->create_publisher<geometry_msgs::msg::PoseStamped>("/" + model_->GetName() + "/pose", qos);
 
@@ -156,8 +154,6 @@ void CarGazeboPlugin::Update() {
       // Send the transformation
       tf_broadcaster_->sendTransform(t);
     }
-
-    publish_state();
 
     // Publish joint states
     auto msg = JointState{};

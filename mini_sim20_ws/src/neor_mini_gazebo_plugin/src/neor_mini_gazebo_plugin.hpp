@@ -164,23 +164,8 @@ namespace neor_mini_gazebo_plugin
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_sub;
 
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_sub;
-    rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr odo_fl_pub;
-    rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr odo_fr_pub;
     rclcpp::Publisher<ackermann_msgs::msg::AckermannDriveStamped>::SharedPtr ackermann_pub;
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pose_pub;
-
-    void publish_state()
-    {
-      const int ticks_per_revolution = 42;
-
-      std_msgs::msg::Int32 odo_fl;
-      odo_fl.data = (int)fl_axle_joint->Position() * ticks_per_revolution / (M_2_PI);
-      odo_fl_pub->publish(odo_fl);
-
-      std_msgs::msg::Int32 odo_fr;
-      odo_fr.data = (int)fr_axle_joint->Position() * ticks_per_revolution / (M_2_PI);
-      odo_fr_pub->publish(odo_fr);
-    }
 
     void joy_callback(sensor_msgs::msg::Joy::SharedPtr msg)
     {
