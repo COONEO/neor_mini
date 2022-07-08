@@ -10,7 +10,9 @@
            
 **分支说明**：
           **foxy**: ROS2 neor_mini 的 Gazebo 仿真，已经做好对应的ROS驱动，参照对应ReadMe.md 或者 ReadMe.md 即可运行。后续在此基础上，会陆续推出新功能；
+          
           **Melodic**: ROS1 版本的 Gazebo 仿真，是目前最完整、相关资料最完善的分支，每一个 chapter 都有一篇微信推文或者知乎博客；
+          
           **Kinetic**: 多年前的萌芽版本，不再提供支持，望理解。
           
 zhaoxiangli 2022.07.08
