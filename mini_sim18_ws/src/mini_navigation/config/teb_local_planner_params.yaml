@@ -17,13 +17,13 @@ TebLocalPlannerROS:
 
  # Robot         
  max_vel_x: 0.2                           #max_vel_x (double, default: 0.4)   
- max_vel_x_backwards: 0.07               #max_vel_x_backwards (double, default: 0.2)  
- acc_lim_x: 1.0                           #acc_lim_x (double, default: 0.5) 
+ max_vel_x_backwards: 0.2               #max_vel_x_backwards (double, default: 0.2)  
+ acc_lim_x: 0.2                           #acc_lim_x (double, default: 0.5) 
 
- max_vel_theta: 1.0                       #max_vel_theta (double, default: 0.3)  
- acc_lim_theta: 0.5                       #acc_lim_theta (double, default: 0.5)  
+ max_vel_theta: 0.3                       #max_vel_theta (double, default: 0.3)  
+ acc_lim_theta: 0.3                       #acc_lim_theta (double, default: 0.5)  
 
- min_turning_radius: 0.38 # min_turning_radius (double, default: 0.0)  diff-drive: 0 max_steer_angle = 45 度，car_length = 0.35  ----> Redius_min= 0.35
+ min_turning_radius: 0.5 # min_turning_radius (double, default: 0.0)  diff-drive: 0 max_steer_angle = 45 度，car_length = 0.35  ----> Redius_min= 0.35
 
 #是否允许原地转
  cmd_angle_instead_rotvel: false  # cmd_angle_instead_rotvel(bool,defaule:false) 
@@ -43,7 +43,7 @@ TebLocalPlannerROS:
  # GoalTolerance
     
  xy_goal_tolerance: 0.2     #  Allowable distance error of target position
- yaw_goal_tolerance: 0.5 #  Allowable angle error of target position
+ yaw_goal_tolerance: 1 #  Allowable angle error of target position
  free_goal_vel: False          #  Remove the constraint of the target speed, that is, the speed when reaching the target point is 0, otherwise it will rush to the line at full speed
     
  # Obstacles
