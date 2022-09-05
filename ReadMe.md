@@ -161,7 +161,7 @@ source devel/setup.bash
 roslaunch steer_mini_gazebo steer_mini_sim.launch
 ```
 
-![](pictures/visual neor_mini gazebo.png)
+![](pictures/visual neor_mini_gazebo.png)
 
 
 
