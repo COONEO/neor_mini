@@ -70,6 +70,9 @@ Related folders（相关目录）:
 
 ​		**Neor_min_ROS_Tutorials**
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=dmego/home.github.io&type=Date)](https://star-history.com/#dmego/home.github.io&Date)
 
 
 ## Chapter 1: Make a indoor autonomous mobile robot
