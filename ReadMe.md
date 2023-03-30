@@ -72,7 +72,7 @@ Related folders（相关目录）:
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=dmego/home.github.io&type=Date)](https://star-history.com/#dmego/home.github.io&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=COONEO/neor_mini&type=Date)](https://star-history.com/#COONEO/neor_mini&Date)
 
 
 ## Chapter 1: Make a indoor autonomous mobile robot
